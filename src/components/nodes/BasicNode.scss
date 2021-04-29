@@ -1,0 +1,64 @@
+@import "../../styles/mixin";
+
+.basic-node-container {
+  background-color: #ffffff !important;
+  max-width: 250px;
+  cursor: move;
+  position: relative;
+  @include box-shadow(0px, 1px, 6px, 0px, rgba(0, 0, 0, 0.2));
+  @include border-radius(5px);
+
+  .node-header {
+    padding: 10px 20px;
+    background-color: white;
+    @include border-radius(5px 5px 0 0);
+  }
+
+  .node-target {
+    border-radius: 50%;
+    width: 20px;
+    margin-left: -10px;
+    height: 20px;
+    background-color: #ccc;
+  }
+
+  .node-content {
+    padding: 10px;
+    background-color: #eee;
+    @include border-radius(0 0 5px 5px);
+
+    .node-message {
+      background-color: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      @include border-radius(5px);
+    }
+
+    .node-replies {
+      position: relative;
+      height: 50px;
+      margin-bottom: 10px;
+      width: "100%";
+      background-color: pink;
+      @include border-radius(5px);
+
+      p {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 11pt;
+        color: #808080;
+      }
+      .node-source {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        margin-right: -5px;
+        background-color: lightblue;
+      }
+    }
+  }
+}
