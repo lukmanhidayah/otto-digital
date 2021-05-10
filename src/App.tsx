@@ -1,5 +1,7 @@
+import Container from "./components/container/Container";
+
 const App = () => {
-  return <div>Initial ChatBot</div>;
+  return <Container />;
 };
 
 export default App;
