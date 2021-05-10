@@ -1,9 +1,5 @@
-import BasicNode from "./components/nodes/BasicNode";
-
-import "./App.scss";
-
 const App = () => {
-  return <BasicNode />;
+  return <div>Initial ChatBot</div>;
 };
 
 export default App;
