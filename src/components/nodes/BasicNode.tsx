@@ -34,7 +34,7 @@ const rootElements = [
   {
     id: "3",
     type: "special",
-    position: { x: 100, y: 100 },
+    position: { x: 494, y: 287 },
     data: {
       title: "Messages 2",
       message: `Hi, name Lukman Hidayah \n
@@ -100,11 +100,13 @@ const onLoad = (reactFlowInstance: any) => reactFlowInstance.fitView();
 
 const BasicNode = () => {
   const [elements, setElements] = useState<any>(rootElements);
+
   // gets called after end of edge gets dragged to another source or target
   const onEdgeUpdate = (oldEdge: any, newConnection: any) => {
     console.log(newConnection);
     setElements((els: any) => updateEdge(oldEdge, newConnection, els));
   };
+
   const onConnect = (params: any) => {
     const handleParams = {
       ...params,
@@ -120,6 +122,7 @@ const BasicNode = () => {
         onLoad={onLoad}
         onEdgeUpdate={onEdgeUpdate}
         onConnect={onConnect}
+        onNodeDragStop={(test) => console.log(test.pageX, test)}
         snapToGrid
         elements={elements}
         nodeTypes={nodeTypes}
