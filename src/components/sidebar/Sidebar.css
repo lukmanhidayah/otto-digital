@@ -1,3 +1,11 @@
 .sidebar {
-  @apply hidden md:block md:fixed md:w-1/6 shadow md:min-h-screen;
+  @apply hidden md:py-1 md:block md:fixed md:w-1/6 shadow md:min-h-screen;
+}
+
+.sidebar .sidebar-link {
+  @apply flex py-4 px-6 items-center text-gray-800 hover:bg-gray-50;
+}
+
+.sidebar .active {
+  @apply border-r-4 border-blue-400;
 }
