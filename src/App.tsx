@@ -6,6 +6,8 @@ import Product from "./pages/product/Product";
 import Registration from "./pages/registration/Registration";
 import Transaction from "./pages/transaction/Transaction";
 
+import "./App.css";
+
 const App = () => {
   return (
     <div className="app">
