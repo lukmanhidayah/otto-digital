@@ -4,12 +4,18 @@ import Sidebar from "../sidebar/Sidebar";
 
 import "./Container.css";
 
-const Container = () => {
+type ContainerType = {
+  children: React.ReactNode;
+  menuType: String;
+};
+
+const Container = ({ children, menuType }: ContainerType) => {
   return (
     <div className="custom-container">
-      <Sidebar />
+      <Sidebar menuType={menuType} />
       <Content>
         <Header />
+        {children}
       </Content>
     </div>
   );
