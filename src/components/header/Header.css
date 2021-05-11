@@ -1,17 +1,24 @@
 .header {
-  @apply grid w-full mb-8;
-  grid-template-columns:60% 1fr;
+  @apply bg-white shadow md:bg-transparent md:shadow-none grid w-full mb-8;
+  grid-template-columns: 60% 1fr;
   height: 72px;
   grid-column-gap: unset;
 }
 
+.header .left-header {
+  @apply w-full bg-white py-2 px-4 flex items-center md:shadow md:rounded;
+}
+
 .header .user-container {
-  @apply grid grid-flow-col auto-cols-max gap-x-2 md:gap-x-4 justify-between items-center w-full bg-white py-2 px-4 shadow rounded focus:outline-none;
+  @apply grid grid-flow-col auto-cols-max gap-x-2 md:gap-x-4 justify-end md:justify-between items-center w-min md:w-full md:bg-white py-2 px-4 md:shadow rounded focus:outline-none justify-self-end;
+}
+.right-align .icon {
+  @apply w-4 stroke-current text-blue-900;
 }
 
 @screen md {
   .header {
-    grid-template-columns: 70% 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-column-gap: 20px;
   }
 }

@@ -1,11 +1,47 @@
 .sidebar {
-  @apply hidden md:py-1 md:block md:w-full shadow md:min-h-screen bg-white;
+  @apply hidden md:py-1 md:block md:w-full shadow md:min-h-screen bg-white overflow-hidden;
+}
+
+.sidebar .sidebar-content {
+  @apply fixed;
+  width: unset;
 }
 
 .sidebar .sidebar-link {
-  @apply w-full flex py-4 px-6 items-center text-gray-800 hover:bg-blue-50;
+  @apply w-full flex h-16 items-center text-gray-800 hover:bg-blue-50;
 }
 
 .sidebar .active {
   @apply border-r-4 border-blue-800;
+}
+
+.sidebar .icon {
+  @apply lg:mr-4;
+}
+
+.sidebar .active .icon {
+  margin-left: 4px;
+}
+
+@screen md {
+  .sidebar .sidebar-content {
+    width: 70px;
+  }
+
+  .sidebar .sidebar-link {
+    @apply justify-center;
+  }
+}
+
+@screen lg {
+  .sidebar .sidebar-content {
+    width: 200px;
+  }
+
+  .sidebar .sidebar-link {
+    @apply px-6 justify-start;
+  }
+  .sidebar .active .icon {
+    margin-left: unset;
+  }
 }

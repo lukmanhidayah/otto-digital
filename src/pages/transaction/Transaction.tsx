@@ -5,6 +5,7 @@ import Container from "../../components/container/Container";
 import { ReactComponent as EyeIcon } from "../../assets/svg/icons/eye.svg";
 
 import data from "../../constants/SampelMovieData";
+import BreakPoint from "../../constants/enums/BreakPoint";
 
 const customStyles = {
   rows: {
@@ -50,17 +51,24 @@ const Transaction = () => {
         selector: "actors",
         grow: 2,
         sortable: true,
+        cell: (row: any) => {
+          return <div className="w-40 md:w-60">
+              <span>{row.actors}</span>
+          </div>;
+        },
       },
       {
         name: "Total Produk",
         selector: "runtime",
         grow: 1,
+        hide: BreakPoint.md,
         sortable: true,
       },
       {
         name: "Total Harga",
         selector: "runtime",
         grow: 1,
+        hide: BreakPoint.md,
         sortable: true,
       },
       {
@@ -85,6 +93,7 @@ const Transaction = () => {
     <Container menuType="transaction">
       <div className="content-container px-10">
         <DataTable
+          responsive
           striped
           columns={columns}
           data={data}
