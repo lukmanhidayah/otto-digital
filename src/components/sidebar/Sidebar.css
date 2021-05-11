@@ -3,9 +3,9 @@
 }
 
 .sidebar .sidebar-link {
-  @apply w-full flex py-4 px-6 items-center text-gray-800 hover:bg-gray-50;
+  @apply w-full flex py-4 px-6 items-center text-gray-800 hover:bg-blue-50;
 }
 
 .sidebar .active {
-  @apply border-r-4 border-blue-400;
+  @apply border-r-4 border-blue-800;
 }
