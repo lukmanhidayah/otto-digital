@@ -10,6 +10,9 @@ import "./Sidebar.css";
 const Sidebar = () => {
   return (
     <ul className="sidebar">
+      <div className="w-full flex items-center justify-center mt-10 mb-10">
+        <h1 className="font-bold text-lg">Logo</h1>
+      </div>
       <li>
         <Link className="sidebar-link active" to="/dashboard">
           <DashboardIcon width={20} height={20} className="mr-4" />

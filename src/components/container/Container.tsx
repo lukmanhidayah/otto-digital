@@ -1,11 +1,16 @@
+import Content from "../content/Content";
 import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
 
+import "./Container.css";
+
 const Container = () => {
   return (
-    <div>
-      <Header />
+    <div className="custom-container">
       <Sidebar />
+      <Content>
+        <Header />
+      </Content>
     </div>
   );
 };

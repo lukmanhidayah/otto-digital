@@ -1,0 +1,11 @@
+.custom-container {
+  @apply grid auto-cols-fr bg-gray-50;
+  grid-template-columns: 1fr;
+  grid-column-gap: 20px;
+}
+
+@screen md {
+  .custom-container {
+    grid-template-columns: 200px 1fr;
+  }
+}

@@ -1,4 +1,6 @@
 .header {
-  @apply flex w-full py-2 px-4 items-center shadow bg-white;
+  @apply grid w-full;
+  grid-template-columns: 70% 1fr;
   height: 72px;
+  grid-column-gap: 20px;
 }
