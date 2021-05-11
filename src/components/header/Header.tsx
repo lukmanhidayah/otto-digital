@@ -10,7 +10,7 @@ const Header = () => {
         <div className="w-full bg-white py-2 px-4 flex items-center shadow rounded">
           <h1>Senin 14 Mei 2021</h1>
         </div>
-        <button className="grid grid-flow-col auto-cols-max gap-x-2 md:gap-x-4 justify-between items-center w-full bg-white py-2 px-4 shadow rounded">
+        <button className="user-container">
           <div className="flex items-center justify-center p-2 rounded focus:outline-none w-full">
             <div
               className="rounded-full overflow-hidden"

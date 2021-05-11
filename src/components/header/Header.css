@@ -1,6 +1,17 @@
 .header {
   @apply grid w-full;
-  grid-template-columns: 70% 1fr;
+  grid-template-columns:60% 1fr;
   height: 72px;
-  grid-column-gap: 20px;
+  grid-column-gap: unset;
+}
+
+.header .user-container {
+  @apply grid grid-flow-col auto-cols-max gap-x-2 md:gap-x-4 justify-between items-center w-full bg-white py-2 px-4 shadow rounded focus:outline-none;
+}
+
+@screen md {
+  .header {
+    grid-template-columns: 70% 1fr;
+    grid-column-gap: 20px;
+  }
 }
