@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Category from "./pages/category/Category";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/login/Login";
@@ -19,6 +19,7 @@ const App = () => {
         <Route path={"/category"} component={Category} />
         <Route path={"/product"} component={Product} />
         <Route path={"/transaction"} component={Transaction} />
+        <Redirect from="/" to="/login" />
       </Switch>
     </div>
   );

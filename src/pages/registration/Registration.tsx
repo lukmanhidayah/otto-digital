@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Registration = () => {
   return (
     <div className="w-full min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="w-full py-4 md:w-6/12 lg:w-4/12 px-20 md:px-4">
+      <div className="w-full py-4 md:w-6/12 lg:w-5/12 px-20 md:px-4">
         <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg border-0 bg-white">
           <div className="rounded-t mb-0 px-6 py-6">
             <div className="text-center mb-3">
@@ -85,7 +85,7 @@ const Registration = () => {
 
               <div className="text-center mt-6">
                 <button
-                  className="bg-blue-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                  className="bg-blue-800 text-white active:bg-blue-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                   type="button"
                 >
                   Masuk
