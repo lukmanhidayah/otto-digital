@@ -1,0 +1,4 @@
+.header {
+  @apply flex w-full py-2 px-4 items-center shadow bg-white;
+  height: 72px;
+}

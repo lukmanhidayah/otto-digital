@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "./Sidebar.css";
 
 const Sidebar = () => {
   return (
-    <ul className="hidden md:block md-fixed md:w-1/6 shadow md:min-h-screen">
+    <ul className="sidebar">
       <li>
         <Link className="px-4 block p-2" to="/home">
           Home

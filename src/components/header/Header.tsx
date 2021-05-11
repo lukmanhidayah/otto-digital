@@ -2,10 +2,12 @@ import { ReactComponent as NotificationIcon } from "../../assets/svg/icons/notif
 import { ReactComponent as MessageIcon } from "../../assets/svg/icons/message.svg";
 import { ReactComponent as SearchIcon } from "../../assets/svg/icons/search.svg";
 
+import "./Header.css";
+
 const Header = () => {
   return (
     <header>
-      <nav className="flex w-full py-4 px-4 items-center shadow bg-white">
+      <nav className="header">
         {/* logo container */}
         <div className="w-1/2 md:w-1/6">Logo</div>
 
@@ -22,14 +24,14 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-flow-col auto-cols-max gap-x-4 md:gap-x-8  justify-end items-center w-1/2 md:w-3/6 ">
-          <div>
-            <MessageIcon />
-          </div>
-          <div>
-            <NotificationIcon />
-          </div>
-          <div className="flex items-center">
+        <div className="grid grid-flow-col auto-cols-max gap-x-2 md:gap-x-4  justify-end items-center w-1/2 md:w-3/6 ">
+          <button className="p-3 rounded-full focus:outline-none hover:bg-gray-100">
+            <MessageIcon width={20} height={20} />
+          </button>
+          <button className="p-3 rounded-full focus:outline-none hover:bg-gray-100">
+            <NotificationIcon width={20} height={20} />
+          </button>
+          <button className="flex items-center p-2 rounded focus:outline-none hover:bg-gray-100">
             <div
               className="rounded-full overflow-hidden"
               style={{
@@ -48,7 +50,7 @@ const Header = () => {
               <h4 className="leading-tight text-sm">Lukman</h4>
               <span className="text-xs font-light">Admin Chatbot</span>
             </div>
-          </div>
+          </button>
         </div>
       </nav>
     </header>
