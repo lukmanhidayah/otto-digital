@@ -1,5 +1,5 @@
 .custom-container {
-  @apply grid auto-cols-fr bg-gray-50 w-full;
+  @apply grid auto-cols-fr bg-blue-50 w-full;
   grid-template-columns: 1fr;
 }
 

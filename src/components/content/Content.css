@@ -1,3 +1,3 @@
 .custom-content {
-  @apply w-full md:py-4 md:px-4 min-h-screen overflow-hidden;
+  @apply md:container mx-auto w-full md:py-4 md:px-4 min-h-screen overflow-hidden;
 }

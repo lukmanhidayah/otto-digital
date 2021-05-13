@@ -21,6 +21,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
         <ul>
           <li>
             <Link
+              title="dashboard"
               className={`sidebar-link ${menuType === "dashboard" && "active"}`}
               to="/dashboard"
             >
@@ -30,6 +31,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
           </li>
           <li>
             <Link
+            title="Kategori"
               className={`sidebar-link ${menuType === "category" && "active"}`}
               to="/category"
             >

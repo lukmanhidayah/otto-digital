@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Category from "./pages/category/Category";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -9,6 +10,19 @@ import Transaction from "./pages/transaction/Transaction";
 import "./App.css";
 
 const App = () => {
+  useEffect(() => {
+    const rootSpinner = document.getElementById("spinner");
+    const body = document.getElementById("body");
+    setTimeout(() => {
+      if (rootSpinner) {
+        rootSpinner.remove();
+      }
+      if (body) {
+        body.style.overflowY = "auto";
+      }
+    }, 1000);
+  }, []);
+
   return (
     <div className="app">
       <div id="modal-root" />

@@ -18,6 +18,7 @@ const customStyles = {
       borderTop: "1px solid #ddd",
       paddingLeft: "8px", // override the cell padding for head cells
       paddingRight: "8px",
+      width: "12px",
     },
   },
   cells: {
@@ -37,13 +38,15 @@ const Transaction = () => {
         name: "No",
         selector: "id",
         grow: 0,
+        minWidth: "45px",
         sortable: true,
       },
       {
         name: "Tanggal",
         selector: "year",
         sortable: true,
-        grow: 1,
+        grow: 0,
+        hide: BreakPoint.md,
         omit: hideDirector,
       },
       {
@@ -52,29 +55,35 @@ const Transaction = () => {
         grow: 2,
         sortable: true,
         cell: (row: any) => {
-          return <div className="w-40 md:w-60">
+          return (
+            <div className="w-40 md:w-60">
               <span>{row.actors}</span>
-          </div>;
+            </div>
+          );
         },
       },
       {
         name: "Total Produk",
         selector: "runtime",
         grow: 1,
-        hide: BreakPoint.md,
+        center: true,
+        hide: BreakPoint.lg,
         sortable: true,
       },
       {
         name: "Total Harga",
         selector: "runtime",
         grow: 1,
-        hide: BreakPoint.md,
+        right: true,
+        hide: BreakPoint.sm,
         sortable: true,
       },
       {
         name: "Aksi",
         center: true,
         grow: 1,
+        button: false,
+        sortable: false,
         cell: (row: any) => {
           return (
             <div className="grid gap-x-2 grid-flow-col">
@@ -91,8 +100,9 @@ const Transaction = () => {
 
   return (
     <Container menuType="transaction">
-      <div className="content-container px-10">
+      <div className="content-container py-10 md:px-10">
         <DataTable
+          noHeader
           responsive
           striped
           columns={columns}
