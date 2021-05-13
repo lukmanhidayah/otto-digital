@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
@@ -30,8 +30,6 @@ const customStyles = {
 };
 
 const Transaction = () => {
-  const [hideDirector, setHideDirector] = useState(false);
-
   const columns = useMemo(
     () => [
       {
@@ -47,7 +45,6 @@ const Transaction = () => {
         sortable: true,
         grow: 0,
         hide: BreakPoint.md,
-        omit: hideDirector,
       },
       {
         name: "Pembeli",
@@ -95,7 +92,7 @@ const Transaction = () => {
         },
       },
     ],
-    [hideDirector]
+    []
   );
 
   return (

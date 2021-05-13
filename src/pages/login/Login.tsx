@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Spinner from "../../assets/svg/spinner/Spinner";
 import CheckBox from "../../components/form/CheckBox";
 import PrimaryButton from "../../components/form/PrimaryButton";
 import TextInput from "../../components/form/TextInput";

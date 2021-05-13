@@ -1,5 +1,5 @@
 .header {
-  @apply bg-white shadow md:bg-transparent md:shadow-none grid w-full mb-8;
+  @apply relative bg-white shadow md:bg-transparent md:shadow-none grid w-full mb-8;
   grid-template-columns: 60% 1fr;
   height: 72px;
   grid-column-gap: unset;
@@ -8,17 +8,85 @@
 .header .left-header {
   @apply w-full bg-white py-2 px-4 flex items-center md:shadow md:rounded;
 }
+.header .left-header .title-container {
+  @apply ml-2 md:ml-0;
+}
 
 .header .user-container {
-  @apply grid grid-flow-col auto-cols-max gap-x-2 md:gap-x-4 justify-end md:justify-between items-center w-min md:w-full md:bg-white py-2 px-4 md:shadow rounded focus:outline-none justify-self-end;
+  @apply md:relative grid grid-flow-col auto-cols-max gap-x-2 md:gap-x-4 justify-end md:justify-between items-center w-min md:w-full
+  md:bg-white py-2 px-4 md:shadow rounded focus:outline-none justify-self-end;
 }
-.right-align .icon {
-  @apply w-4 stroke-current text-blue-900;
+
+/* user content */
+
+.header .user-container .user-content {
+  @apply flex items-center justify-center p-2 rounded focus:outline-none w-full;
 }
+
+.user-content .user-profile-container {
+  @apply rounded-full overflow-hidden;
+  width: 40px;
+  height: 40px;
+}
+
+.user-content .user-name-container {
+  @apply hidden md:block ml-6 flex-col;
+}
+
+.user-profile-container .user-profile {
+  @apply object-cover w-full h-full;
+}
+
+/* end user content */
+
+/* icon container */
+.user-container .icon-container .icon {
+  @apply w-4 stroke-current text-blue-900 transition-all duration-300;
+  width: 18px;
+  height: 18px;
+}
+/* end icon contianer */
+
+/* user menu */
+.user-container .user-menu-container {
+  @apply absolute top-full -mt-2 w-full bg-white rounded shadow text-left overflow-hidden rounded-t-none border-t border-gray-100 md:border-t-0 opacity-0;
+  animation-name: fadeInUp;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.user-container .user-menu-container .user-menu {
+  @apply block hover:bg-blue-50 p-4 md:px-10 text-sm text-gray-700;
+}
+/* end of user menu */
 
 @screen md {
   .header {
     grid-template-columns: 2fr 1fr;
     grid-column-gap: 20px;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, -20px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d(0, -20px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
   }
 }

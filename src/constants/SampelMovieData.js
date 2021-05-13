@@ -1,4 +1,4 @@
-export default [
+const SampleMovieData = [
   {
     id: 1,
     title: "Beetlejuice",
@@ -1019,3 +1019,4 @@ export default [
       "http://ia.media-imdb.com/images/M/MV5BMTc3NDYzODAwNV5BMl5BanBnXkFtZTgwODg1MTczMTE@._V1_SX300.jpg",
   },
 ];
+export default SampleMovieData;

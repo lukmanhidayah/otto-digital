@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
@@ -31,8 +31,6 @@ const customStyles = {
 };
 
 const Category = () => {
-  const [hideDirector, setHideDirector] = useState(false);
-
   const columns = useMemo(
     () => [
       {
@@ -47,7 +45,6 @@ const Category = () => {
         sortable: true,
         grow: 2,
         cell: (row: any) => <div>{row.actors}</div>,
-        omit: hideDirector,
       },
       {
         name: "Stok",
@@ -79,7 +76,7 @@ const Category = () => {
         },
       },
     ],
-    [hideDirector]
+    []
   );
 
   return (
