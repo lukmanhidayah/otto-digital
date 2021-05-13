@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 
-import { ReactComponent as DashboardIcon } from "../../assets/svg/icons/dashboard.svg";
-import { ReactComponent as CategoryIcon } from "../../assets/svg/icons/category.svg";
-import { ReactComponent as ProductIcon } from "../../assets/svg/icons/product.svg";
-import { ReactComponent as TransactionIcon } from "../../assets/svg/icons/transaction.svg";
-import { ReactComponent as CloseIcon } from "../../assets/svg/icons/x.svg";
-
 import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleNavBar } from "../../redux/utils/utilsAction";
 import { useCallback } from "react";
+import {
+  DashboardIcon,
+  CategoryIcon,
+  ProductIcon,
+  TransactionIcon,
+  CloseIcon,
+} from "../../assets/svg/icons";
 
 type SideBarType = {
   menuType: String;

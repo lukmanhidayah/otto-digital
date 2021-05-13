@@ -1,13 +1,16 @@
 const CheckBox = () => {
   return (
     <div>
-      <label className="inline-flex mt-2 items-center cursor-pointer">
+      <label
+        className="inline-flex mt-2 items-center cursor-pointer"
+        htmlFor="remember"
+      >
         <input
-          id="customCheckLogin"
+          id="remember"
           type="checkbox"
-          className="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+          className="form-checkbox rounded border-gray-500 text-blue-800 focus:outline-none "
         />
-        <span className="ml-2 text-sm font-semibold text-blueGray-600">
+        <span className="ml-2 text-xs font-normal text-gray-600">
           Remember me
         </span>
       </label>
