@@ -87,7 +87,7 @@ const Transaction = () => {
         cell: (row: any) => {
           return (
             <div className="grid gap-x-2 grid-flow-col">
-              <button className="p-2 border rounded border-blue-500 focus:outline-none hover:bg-blue-100">
+              <button className="transition duration-300 ease-in-out p-2 border rounded border-blue-500 focus:outline-none hover:bg-blue-100">
                 <EyeIcon />
               </button>
             </div>
