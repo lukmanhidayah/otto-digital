@@ -1,0 +1,11 @@
+.modal-title {
+  @apply text-left font-bold border-b text-lg pb-2;
+}
+
+.button-container-sticky {
+  @apply sticky bg-white w-full bottom-0 p-5 py-4 flex justify-end border-t;
+}
+
+.button-secondary {
+  @apply py-2 px-4 focus:outline-none rounded uppercase font-bold text-sm;
+}

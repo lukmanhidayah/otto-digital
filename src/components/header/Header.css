@@ -58,7 +58,7 @@
 }
 
 .user-container .user-menu-container .user-menu {
-  @apply block hover:bg-blue-50 p-4 md:px-10 text-sm text-gray-700;
+  @apply block hover:bg-blue-50 p-4 md:px-10 text-sm text-gray-700 w-full text-left focus:outline-none;
 }
 /* end of user menu */
 
