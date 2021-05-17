@@ -10,6 +10,7 @@ import data from "../../constants/SampelMovieData";
 import "./Category.css";
 import Modal from "../../components/modal/Modal";
 import TextInput from "../../components/form/TextInput";
+import TextArea from "../../components/form/TextArea";
 
 const customStyles = {
   rows: {
@@ -35,6 +36,11 @@ const customStyles = {
 const Category = () => {
   const [isModalShow, setIsModalShow] = useState(false);
 
+  const [dataModal, setDataModal] = useState({
+    name: "",
+    description: "",
+  });
+
   const columns = useMemo(
     () => [
       {
@@ -51,14 +57,8 @@ const Category = () => {
         cell: (row: any) => <div>{row.actors}</div>,
       },
       {
-        name: "Stok",
+        name: "Deskripsi",
         selector: "runtime",
-        grow: 1,
-        sortable: true,
-      },
-      {
-        name: "Harga",
-        selector: "year",
         grow: 1,
         sortable: true,
       },
@@ -100,27 +100,24 @@ const Category = () => {
             </h3>
 
             <div className="py-2">
-              <TextInput name="categoryName" type="text" placeholder="Nama" />
               <TextInput
-                name="categoryStok"
-                type="number"
-                placeholder="Stok"
-                min={1}
+                name="categoryName"
+                type="text"
+                placeholder="Nama"
+                value={dataModal.name}
               />
-              <TextInput
-                currency
-                name="categoryHarga"
-                type="number"
-                placeholder="Harga"
-                min={1}
+              <TextArea
+                name="categoryDescription"
+                placeholder="Deskripsi"
+                value={dataModal.description}
               />
               <div className="flex justify-end border-t mt-5 pt-2">
                 <div />
-                <button className="py-2 px-4 focus:outline-none bg-white text-red-700 active:text-blue-900 rounded uppercase font-bold text-sm">
-                  Cancel
+                <button className="py-2 px-4 focus:outline-none bg-white text-blue-800 border border-blue-800 active:bg-blue-50 active:text-blue-900 rounded uppercase font-bold text-sm">
+                  Batal
                 </button>
                 <button className="py-2 px-4 focus:outline-none bg-blue-800 text-white rounded uppercase font-bold text-sm ml-5 active:bg-blue-900 shadow">
-                  Submit
+                  Simpan
                 </button>
               </div>
             </div>

@@ -3,6 +3,7 @@ type TextInputType = {
   placeholder: string;
   type: string;
   min?: number;
+  value?: any;
   currency?: Boolean;
 };
 
@@ -11,12 +12,13 @@ const TextInput = ({
   placeholder,
   type,
   min,
+  value,
   currency = false,
 }: TextInputType) => {
   return (
     <div className="relative w-full mb-3">
       <label
-        className="block text-blueGray-600 text-xs font-bold mb-2"
+        className="block text-blueGray-600 text-xs font-normal mb-2"
         htmlFor={name}
       >
         {placeholder}
@@ -33,6 +35,7 @@ const TextInput = ({
         <input
           type={type}
           name={name}
+          value={value}
           id={name}
           className={`border px-3 py-3 ${
             currency && "pl-12"
