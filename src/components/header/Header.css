@@ -50,7 +50,7 @@
 /* user menu */
 .user-container .user-menu-container {
   @apply absolute top-full -mt-2 w-full bg-white rounded shadow text-left overflow-hidden rounded-t-none border-t border-gray-100 md:border-t-0 opacity-0;
-  animation-name: fadeInUp;
+  animation-name: fadeUpIn;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
   -webkit-animation-fill-mode: both;
@@ -69,7 +69,7 @@
   }
 }
 
-@keyframes fadeInUp {
+@keyframes fadeUpIn {
   from {
     transform: translate3d(0, -20px, 0);
   }
@@ -80,7 +80,7 @@
   }
 }
 
-@-webkit-keyframes fadeInUp {
+@-webkit-keyframes fadeUpIn {
   from {
     transform: translate3d(0, -20px, 0);
   }

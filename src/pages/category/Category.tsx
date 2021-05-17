@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
@@ -8,6 +8,8 @@ import { ReactComponent as TrashIcon } from "../../assets/svg/icons/trash.svg";
 import data from "../../constants/SampelMovieData";
 
 import "./Category.css";
+import Modal from "../../components/modal/Modal";
+import TextInput from "../../components/form/TextInput";
 
 const customStyles = {
   rows: {
@@ -31,6 +33,8 @@ const customStyles = {
 };
 
 const Category = () => {
+  const [isModalShow, setIsModalShow] = useState(false);
+
   const columns = useMemo(
     () => [
       {
@@ -81,9 +85,56 @@ const Category = () => {
 
   return (
     <Container menuType="category">
+      {isModalShow && (
+        <Modal
+          type="full-width"
+          className="w-full md:w-2/3 lg:w-1/2"
+          onBackgroundClick={() => {
+            setIsModalShow((prevState) => !prevState);
+          }}
+          animation="fadeIn"
+        >
+          <div className="w-full p-5 py-4">
+            <h3 className="text-left font-bold border-b text-xl pb-2  ">
+              Tambah Kategori
+            </h3>
+
+            <div className="py-2">
+              <TextInput name="categoryName" type="text" placeholder="Nama" />
+              <TextInput
+                name="categoryStok"
+                type="number"
+                placeholder="Stok"
+                min={1}
+              />
+              <TextInput
+                currency
+                name="categoryHarga"
+                type="number"
+                placeholder="Harga"
+                min={1}
+              />
+              <div className="flex justify-end border-t mt-5 pt-2">
+                <div />
+                <button className="py-2 px-4 focus:outline-none bg-white text-red-700 active:text-blue-900 rounded uppercase font-bold text-sm">
+                  Cancel
+                </button>
+                <button className="py-2 px-4 focus:outline-none bg-blue-800 text-white rounded uppercase font-bold text-sm ml-5 active:bg-blue-900 shadow">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
       <div className="content-container px-10">
         <div className="w-full flex justify-end mb-2">
-          <button className="py-2 px-4 bg-blue-800 rounded text-white leading-tight focus:outline-none active:bg-blue-900 shadow">
+          <button
+            onClick={() => {
+              setIsModalShow((prevState) => !prevState);
+            }}
+            className="py-2 px-4 bg-blue-800 rounded text-white leading-tight focus:outline-none active:bg-blue-900 shadow"
+          >
             Tambah Kategori
           </button>
         </div>

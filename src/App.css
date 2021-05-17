@@ -1,3 +1,69 @@
 .content-container {
   @apply w-full bg-white p-3 py-4 rounded shadow;
 }
+
+body.modal-open {
+  height: 100vh;
+  overflow-y: hidden !important;
+}
+
+.app {
+  position: relative;
+}
+.app #modal-root {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  opacity: 0;
+  width: 100%;
+}
+.app #modal-root.modal-open {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: visible;
+  opacity: 0;
+  animation-name: fadeOpacity;
+  -webkit-animation-duration: 300ms;
+  animation-duration: 300ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.border-primary {
+  border: 1px solid #2c3642;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

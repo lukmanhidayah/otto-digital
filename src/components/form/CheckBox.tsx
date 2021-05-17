@@ -8,7 +8,7 @@ const CheckBox = () => {
         <input
           id="remember"
           type="checkbox"
-          className="form-checkbox rounded border-gray-500 text-blue-800 focus:outline-none "
+          className="form-checkbox rounded border-gray-300 text-blue-800 focus:outline-none transition duration-500 ease-in-out"
         />
         <span className="ml-2 text-xs font-normal text-gray-600">
           Remember me

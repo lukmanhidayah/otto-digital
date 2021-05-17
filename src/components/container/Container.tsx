@@ -7,11 +7,12 @@ import "./Container.css";
 type ContainerType = {
   children: React.ReactNode;
   menuType: String;
+  className?: string;
 };
 
-const Container = ({ children, menuType }: ContainerType) => {
+const Container = ({ children, menuType, className }: ContainerType) => {
   return (
-    <div className="custom-container">
+    <div className={`custom-container ${className}`}>
       <Sidebar menuType={menuType} />
       <Content>
         <Header />
