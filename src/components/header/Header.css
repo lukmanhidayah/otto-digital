@@ -41,7 +41,7 @@
 
 /* icon container */
 .user-container .icon-container .icon {
-  @apply w-4 stroke-current text-blue-900 transition-all duration-300;
+  @apply w-4 stroke-current text-gray-500 transition-all duration-300;
   width: 18px;
   height: 18px;
 }

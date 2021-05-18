@@ -2,22 +2,35 @@ import { useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
-import { ReactComponent as PencilIcon } from "../../assets/svg/icons/pencil.svg";
-import { ReactComponent as TrashIcon } from "../../assets/svg/icons/trash.svg";
+import {
+  PencilIcon,
+  TrashIcon,
+  SettingsIcon,
+  ExportIcon,
+  EyeIcon,
+  ImportIcon,
+  ArrowDownIcon,
+  PhoneIcon,
+} from "../../assets/svg/icons";
 
 import data from "../../constants/SampelMovieData";
 import TextInput from "../../components/form/TextInput";
 import ModalApp from "../../components/modal/ModalApp";
 
+import "./History.css";
+
 const customStyles = {
   rows: {
     style: {
+      border: "1px solid #eee",
       minHeight: "72px", // override the row height
     },
   },
   headCells: {
     style: {
       borderTop: "1px solid #ddd",
+      backgroundColor: "#012965",
+      color: "white",
       paddingLeft: "8px", // override the cell padding for head cells
       paddingRight: "8px",
     },
@@ -49,36 +62,55 @@ const History = () => {
         sortable: true,
       },
       {
-        name: "Nama Produk",
+        name: "Tanggal",
         selector: "actors",
         sortable: true,
         grow: 2,
         cell: (row: any) => <div>{row.actors}</div>,
       },
       {
-        name: "Stok",
-        selector: "runtime",
-        grow: 1,
+        name: "Jenis Pesan",
+        selector: "actors",
         sortable: true,
+        grow: 2,
+        cell: (row: any) => <div>{row.actors}</div>,
       },
       {
-        name: "Harga",
+        name: "Penerima",
         selector: "year",
-        grow: 1,
         sortable: true,
+        center: true,
+        grow: 2,
+        cell: (row: any) => <div>{row.year}</div>,
+      },
+      {
+        name: "Status",
+        selector: "year",
+        sortable: true,
+        center: true,
+        grow: 2,
+        cell: (row: any) => <div>{row.year}</div>,
       },
       {
         name: "Aksi",
         center: true,
-        grow: 1,
+        grow: 2,
         cell: (row: any) => {
           return (
             <div className="grid gap-x-2 grid-flow-col">
-              <button className="p-2 px-3 border rounded border-green-500 focus:outline-none hover:bg-green-100">
-                <PencilIcon />
+              <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-blue-800">
+                <EyeIcon
+                  width={16}
+                  height={16}
+                  className="stroke-current stroke-2 text-blue-900"
+                />
               </button>
-              <button className="p-2 px-3 border rounded border-red-500 focus:outline-none hover:bg-red-100">
-                <TrashIcon />
+              <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-blue-800">
+                <EyeIcon
+                  width={16}
+                  height={16}
+                  className="stroke-current stroke-2 text-blue-900"
+                />
               </button>
             </div>
           );
@@ -141,21 +173,62 @@ const History = () => {
       )}
 
       <div className="content-container px-10">
-        <div className="w-full flex justify-end mb-2">
-          <button
-            className="py-2 px-4 bg-blue-800 rounded text-white leading-tight focus:outline-none active:bg-blue-900 shadow"
-            onClick={onToggleModal}
-          >
-            Tambah Produk
-          </button>
+        <div className="flex">
+          {/* left header */}
+          <div className="w-full flex flex-row mb-2">
+            <div
+              className="header-button rounded-r-none px-3"
+              onClick={onToggleModal}
+            >
+              <PhoneIcon />
+            </div>
+            <div
+              className="max-w-1/2 w-1/3 border border-gray-300 px-2 py-0 flex items-center cursor-pointer"
+              onClick={onToggleModal}
+            >
+              <p className="text-sm">Bot 1</p>
+            </div>
+            <div
+              className="border border-l-0 border-gray-300 px-2 flex items-center rounded-r cursor-pointer"
+              onClick={onToggleModal}
+            >
+              <ArrowDownIcon
+                width={16}
+                height={16}
+                className="stroke-current stroke-2 text-gray-500"
+              />
+            </div>
+          </div>
+          {/* end of left header */}
+
+          {/* right header */}
+          <div className="w-full flex justify-end mb-2">
+            <button
+              className="header-button mr-4 grid grid-flow-col gap-3"
+              onClick={onToggleModal}
+            >
+              <ImportIcon /> Import
+            </button>
+            <button
+              className="header-button mr-4 grid grid-flow-col gap-3"
+              onClick={onToggleModal}
+            >
+              <ExportIcon /> Export
+            </button>
+            <button className="header-button" onClick={onToggleModal}>
+              Buat Akun
+            </button>
+          </div>
         </div>
-        <DataTable
-          striped
-          noHeader
-          columns={columns}
-          data={data}
-          customStyles={customStyles}
-        />
+        <div className="py-6">
+          <DataTable
+            noHeader
+            striped
+            columns={columns}
+            data={data}
+            customStyles={customStyles}
+          />
+        </div>
       </div>
     </Container>
   );

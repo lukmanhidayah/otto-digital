@@ -7,6 +7,9 @@ import {
   TrashIcon,
   SettingsIcon,
   ExportIcon,
+  ImportIcon,
+  ArrowDownIcon,
+  PhoneIcon,
 } from "../../assets/svg/icons";
 
 import data from "../../constants/SampelMovieData";
@@ -58,18 +61,26 @@ const Message = () => {
         sortable: true,
       },
       {
-        name: "Nomor Telepon",
+        name: "Isi Pesan",
         selector: "actors",
         sortable: true,
         grow: 2,
         cell: (row: any) => <div>{row.actors}</div>,
       },
       {
-        name: "Perusahaan",
+        name: "Nama Penerima",
         selector: "actors",
         sortable: true,
         grow: 2,
         cell: (row: any) => <div>{row.actors}</div>,
+      },
+      {
+        name: "Tanggal",
+        selector: "year",
+        sortable: true,
+        center: true,
+        grow: 2,
+        cell: (row: any) => <div>{row.year}</div>,
       },
       {
         name: "Aksi",
@@ -152,13 +163,48 @@ const Message = () => {
       )}
 
       <div className="content-container px-10">
-        <div className="w-full flex justify-end mb-2">
-          <button className="header-button mr-4 grid grid-flow-col gap-3" onClick={onToggleModal}>
-            <ExportIcon /> Export
-          </button>
-          <button className="header-button" onClick={onToggleModal}>
-            Buat Akun
-          </button>
+        <div className="flex">
+          {/* left header */}
+          <div className="w-full flex flex-row mb-2">
+            <div
+              className="header-button rounded-r-none px-3"
+              onClick={onToggleModal}
+            >
+              <PhoneIcon />
+            </div>
+            <div
+              className="max-w-1/2 w-1/3 border border-gray-300 px-2 py-0 flex items-center cursor-pointer"
+              onClick={onToggleModal}
+            >
+              <p className="text-sm">Bot 1</p>
+            </div>
+            <div
+              className="border border-l-0 border-gray-300 px-2 flex items-center rounded-r cursor-pointer"
+              onClick={onToggleModal}
+            >
+              <ArrowDownIcon width={16} height={16} className="stroke-current stroke-2 text-gray-500"/>
+            </div>
+          </div>
+          {/* end of left header */}
+
+          {/* right header */}
+          <div className="w-full flex justify-end mb-2">
+            <button
+              className="header-button mr-4 grid grid-flow-col gap-3"
+              onClick={onToggleModal}
+            >
+              <ImportIcon /> Import
+            </button>
+            <button
+              className="header-button mr-4 grid grid-flow-col gap-3"
+              onClick={onToggleModal}
+            >
+              <ExportIcon /> Export
+            </button>
+            <button className="header-button" onClick={onToggleModal}>
+              Buat Akun
+            </button>
+          </div>
         </div>
         <div className="py-6">
           <DataTable
