@@ -30,7 +30,7 @@ const customStyles = {
   },
 };
 
-const Product = () => {
+const Message = () => {
   const [isModalShow, setIsModalShow] = useState(false);
 
   const [dataModal, setDataModal] = useState({
@@ -100,7 +100,7 @@ const Product = () => {
   };
 
   return (
-    <Container menuType="product">
+    <Container menuType="message">
       {isModalShow && (
         <ModalApp onToggleModal={onToggleModal} title="Tambah Produk">
           <>
@@ -160,4 +160,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Message;

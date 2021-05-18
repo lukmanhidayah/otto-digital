@@ -6,10 +6,7 @@ import { ReactComponent as PencilIcon } from "../../assets/svg/icons/pencil.svg"
 import { ReactComponent as TrashIcon } from "../../assets/svg/icons/trash.svg";
 
 import data from "../../constants/SampelMovieData";
-
-import "./Category.css";
 import TextInput from "../../components/form/TextInput";
-import TextArea from "../../components/form/TextArea";
 import ModalApp from "../../components/modal/ModalApp";
 
 const customStyles = {
@@ -33,12 +30,14 @@ const customStyles = {
   },
 };
 
-const Category = () => {
+const Schedule = () => {
   const [isModalShow, setIsModalShow] = useState(false);
 
   const [dataModal, setDataModal] = useState({
-    name: "",
-    description: "",
+    productName: "",
+    productStock: "",
+    productPrice: "",
+    productImage: "",
   });
 
   const columns = useMemo(
@@ -50,15 +49,21 @@ const Category = () => {
         sortable: true,
       },
       {
-        name: "Nama Kategori",
+        name: "Nama Produk",
         selector: "actors",
         sortable: true,
         grow: 2,
         cell: (row: any) => <div>{row.actors}</div>,
       },
       {
-        name: "Deskripsi",
+        name: "Stok",
         selector: "runtime",
+        grow: 1,
+        sortable: true,
+      },
+      {
+        name: "Harga",
+        selector: "year",
         grow: 1,
         sortable: true,
       },
@@ -85,34 +90,63 @@ const Category = () => {
 
   const onToggleModal = () => setIsModalShow((prevState) => !prevState);
 
+  const onChange = (e: { target: { name: string; value: any } }) => {
+    const { name, value } = e.target;
+    console.log(value);
+    setDataModal((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return (
-    <Container menuType="category">
+    <Container menuType="schedule">
       {isModalShow && (
-        <ModalApp onToggleModal={onToggleModal} title="Tambah Kategori">
+        <ModalApp onToggleModal={onToggleModal} title="Tambah Produk">
           <>
             <TextInput
-              name="categoryName"
+              name="productName"
               type="text"
-              placeholder="Nama"
-              value={dataModal.name}
+              onChange={onChange}
+              placeholder="Nama Produk"
+              value={dataModal.productName}
             />
-            <TextArea
-              name="categoryDescription"
-              placeholder="Deskripsi"
-              value={dataModal.description}
+            <TextInput
+              name="productStock"
+              type="number"
+              onChange={onChange}
+              placeholder="Stok"
+              min={1}
+              value={dataModal.productStock}
+            />
+            <TextInput
+              currency
+              name="productPrice"
+              type="number"
+              placeholder="Harga"
+              onChange={onChange}
+              min={1}
+              value={dataModal.productPrice}
+            />
+            <TextInput
+              name="productImage"
+              accept="image/*"
+              type="file"
+              onChange={onChange}
+              placeholder="Gambar Produk"
+              value={dataModal.productImage}
             />
           </>
         </ModalApp>
       )}
+
       <div className="content-container px-10">
         <div className="w-full flex justify-end mb-2">
           <button
-            onClick={() => {
-              setIsModalShow((prevState) => !prevState);
-            }}
             className="py-2 px-4 bg-blue-800 rounded text-white leading-tight focus:outline-none active:bg-blue-900 shadow"
+            onClick={onToggleModal}
           >
-            Tambah Kategori
+            Tambah Produk
           </button>
         </div>
         <DataTable
@@ -126,4 +160,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default Schedule;
