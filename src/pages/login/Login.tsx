@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import CheckBox from "../../components/form/CheckBox";
 import PrimaryButton from "../../components/form/PrimaryButton";
 import TextInput from "../../components/form/TextInput";
+import { ReactComponent as LogoIcon } from "../../assets/svg/logo.svg";
 
 import "./Login.css";
 
@@ -11,8 +11,13 @@ const Login = () => {
       <div className="login-container">
         <div className="login-content">
           <div className="logo-container">
-            <div className="text-center mb-3">
-              <h1 className="text-blueGray-500 text-lg font-bold">Logo</h1>
+            <div className="flex items-center justify-center w-full mb-3">
+              <span className="p-4 border rounded-full">
+                <LogoIcon width={48} height={48} className="stroke-current" />
+              </span>
+              <h1 className="text-blueGray-500 text-5xl font-normal uppercase ml-4">
+                Logo
+              </h1>
             </div>
             <hr className="underline" />
           </div>
@@ -27,16 +32,6 @@ const Login = () => {
               <CheckBox />
               <PrimaryButton title={"Masuk"} />
             </form>
-            <div className="flex flex-wrap mt-6 relative">
-              <div className="w-full text-left">
-                <small>
-                  Belum memiliki akun?{" "}
-                  <Link to="/registration" className="text-blue-800">
-                    Daftar disini
-                  </Link>
-                </small>
-              </div>
-            </div>
           </div>
         </div>
       </div>
