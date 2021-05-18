@@ -224,7 +224,7 @@ const Header = () => {
             <ul>
               <li>
                 <div onClick={onToggleModal} className="user-menu">
-                  Ubah data pengguna
+                  Ubah profile
                 </div>
               </li>
               <li>

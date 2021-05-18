@@ -151,6 +151,7 @@ const History = () => {
         </div>
         <DataTable
           striped
+          noHeader
           columns={columns}
           data={data}
           customStyles={customStyles}

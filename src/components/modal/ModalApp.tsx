@@ -28,7 +28,7 @@ const ModalApp = ({ children, onToggleModal, title }: ModalAppType) => {
         >
           Batal
         </button>
-        <button className="button-secondary bg-blue-800 text-white ml-5 active:bg-blue-900 shadow">
+        <button className="button-secondary bg-blue-900 text-white ml-5 active:bg-blue-850 shadow">
           Simpan
         </button>
       </div>
