@@ -5,7 +5,6 @@ import Container from "../../components/container/Container";
 import {
   PencilIcon,
   TrashIcon,
-  SettingsIcon,
   ExportIcon,
   ImportIcon,
   ArrowDownIcon,
@@ -17,6 +16,7 @@ import TextInput from "../../components/form/TextInput";
 import ModalApp from "../../components/modal/ModalApp";
 
 import "./Reply.css";
+import SecondaryButton from "../../components/form/SecondaryButton";
 
 const customStyles = {
   rows: {
@@ -185,22 +185,22 @@ const Reply = () => {
           {/* end of left header */}
 
           {/* right header */}
-          <div className="w-full flex justify-end mb-2">
-            <button
-              className="header-button mr-4 grid grid-flow-col gap-3"
+          <div className="right-header-container">
+            <SecondaryButton
+              className="mr-4 grid grid-flow-col gap-3"
               onClick={onToggleModal}
             >
               <ImportIcon /> Import
-            </button>
-            <button
-              className="header-button mr-4 grid grid-flow-col gap-3"
+            </SecondaryButton>
+            <SecondaryButton
+              className="mr-4 grid grid-flow-col gap-3"
               onClick={onToggleModal}
             >
               <ExportIcon /> Export
-            </button>
-            <button className="header-button" onClick={onToggleModal}>
-              Buat Akun
-            </button>
+            </SecondaryButton>
+            <SecondaryButton onClick={onToggleModal}>
+              Buat Pesan
+            </SecondaryButton>
           </div>
         </div>
         <div className="py-6">

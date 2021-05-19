@@ -14,30 +14,7 @@ import TextInput from "../../components/form/TextInput";
 import ModalApp from "../../components/modal/ModalApp";
 
 import "./Home.css";
-
-const customStyles = {
-  rows: {
-    style: {
-      border: "1px solid #eee",
-      minHeight: "72px", // override the row height
-    },
-  },
-  headCells: {
-    style: {
-      borderTop: "1px solid #ddd",
-      backgroundColor: "#012965",
-      color: "white",
-      paddingLeft: "8px", // override the cell padding for head cells
-      paddingRight: "8px",
-    },
-  },
-  cells: {
-    style: {
-      paddingLeft: "8px", // override the cell padding for data cells
-      paddingRight: "8px",
-    },
-  },
-};
+import SecondaryButton from "../../components/form/SecondaryButton";
 
 const Home = () => {
   const [isModalShow, setIsModalShow] = useState(false);
@@ -74,7 +51,7 @@ const Home = () => {
       {
         name: "Aksi",
         center: true,
-        grow: 1,
+        grow: 2,
         cell: (row: any) => {
           return (
             <div className="grid gap-x-2 grid-flow-col">
@@ -82,7 +59,7 @@ const Home = () => {
                 <SettingsIcon
                   width={16}
                   height={16}
-                  className="stroke-current stroke-2 text-blue-900"
+                  className="stroke-current stroke-1 text-blue-900"
                 />
               </button>
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-green-600">
@@ -113,52 +90,42 @@ const Home = () => {
   return (
     <Container menuType="home">
       {isModalShow && (
-        <ModalApp onToggleModal={onToggleModal} title="Tambah Produk">
+        <ModalApp onToggleModal={onToggleModal} title="Tambah Akun">
           <>
             <TextInput
-              name="productName"
+              name="phoneNumber"
               type="text"
               onChange={onChange}
-              placeholder="Nama Produk"
+              placeholder="Nomor Telepon"
               value={dataModal.productName}
             />
             <TextInput
               name="productStock"
-              type="number"
+              type="text"
               onChange={onChange}
-              placeholder="Stok"
-              min={1}
+              placeholder="Nama Akun"
               value={dataModal.productStock}
             />
             <TextInput
-              currency
-              name="productPrice"
-              type="number"
-              placeholder="Harga"
+              name="productStock"
+              type="text"
               onChange={onChange}
-              min={1}
-              value={dataModal.productPrice}
-            />
-            <TextInput
-              name="productImage"
-              accept="image/*"
-              type="file"
-              onChange={onChange}
-              placeholder="Gambar Produk"
-              value={dataModal.productImage}
+              placeholder="Pilih Perusahaan"
+              value={dataModal.productStock}
             />
           </>
         </ModalApp>
       )}
 
       <div className="content-container px-10">
-        <div className="w-full flex justify-end mb-2">
-          <button className="header-button mr-4 grid grid-flow-col gap-3" onClick={onToggleModal}>
+        <div className="right-header-container">
+          <SecondaryButton
+            className="mr-4 grid grid-flow-col gap-3"
+            onClick={onToggleModal}
+          >
             <ExportIcon /> Export
-          </button>
-          <button className="header-button" onClick={onToggleModal}>
-            Buat Akun
-          </button>
+          </SecondaryButton>
+          <SecondaryButton onClick={onToggleModal}>Buat Akun</SecondaryButton>
         </div>
         <div className="py-6">
           <DataTable
@@ -175,3 +142,27 @@ const Home = () => {
 };
 
 export default Home;
+
+const customStyles = {
+  rows: {
+    style: {
+      border: "1px solid #eee",
+      minHeight: "72px", // override the row height
+    },
+  },
+  headCells: {
+    style: {
+      borderTop: "1px solid #ddd",
+      backgroundColor: "#012965",
+      color: "white",
+      paddingLeft: "8px", // override the cell padding for head cells
+      paddingRight: "8px",
+    },
+  },
+  cells: {
+    style: {
+      paddingLeft: "8px", // override the cell padding for data cells
+      paddingRight: "8px",
+    },
+  },
+};

@@ -13,6 +13,8 @@ import {
   CloseIcon,
 } from "../../assets/svg/icons";
 
+import { ReactComponent as LogoIcon } from "../../assets/svg/logo.svg";
+
 type SideBarType = {
   menuType: String;
 };
@@ -42,7 +44,8 @@ const Sidebar = ({ menuType }: SideBarType) => {
     <div className={`sidebar ${!isShowNavBar && "hidden"} md:block`}>
       <div className="sidebar-content">
         <div className="logo-container">
-          <h1 className="logo">Logo</h1>
+          <LogoIcon width={42} height={42} />
+          <h1 className="logo ml-1">Logo</h1>
           <button className="close-container" onClick={actionToggleNavBar}>
             <CloseIcon />
           </button>
@@ -84,9 +87,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
           <li>
             <Link
               title="Pesan Terjadwal"
-              className={`sidebar-link ${
-                menuType === "schedule" && "active"
-              }`}
+              className={`sidebar-link ${menuType === "schedule" && "active"}`}
               to="/schedule"
               onClick={actionToggleNavBar}
             >
@@ -97,9 +98,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
           <li>
             <Link
               title="Riwayat Pesan"
-              className={`sidebar-link ${
-                menuType === "history" && "active"
-              }`}
+              className={`sidebar-link ${menuType === "history" && "active"}`}
               to="/history"
               onClick={actionToggleNavBar}
             >

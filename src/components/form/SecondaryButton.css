@@ -1,0 +1,3 @@
+.secondary-button-container {
+    @apply py-3 px-5 bg-blue-900 rounded text-white leading-tight focus:outline-none active:bg-blue-850 shadow text-sm items-center;
+  }

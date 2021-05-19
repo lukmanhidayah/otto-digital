@@ -3,12 +3,9 @@ import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
 import {
-  PencilIcon,
-  TrashIcon,
-  SettingsIcon,
+  SendMessageIcon,
   ExportIcon,
   EyeIcon,
-  ImportIcon,
   ArrowDownIcon,
   PhoneIcon,
 } from "../../assets/svg/icons";
@@ -99,10 +96,10 @@ const History = () => {
           return (
             <div className="grid gap-x-2 grid-flow-col">
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-blue-800">
-                <EyeIcon
+                <SendMessageIcon
                   width={16}
                   height={16}
-                  className="stroke-current stroke-2 text-blue-900"
+                  className="stroke-current stroke-1 text-blue-900"
                 />
               </button>
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-blue-800">
@@ -204,19 +201,10 @@ const History = () => {
           {/* right header */}
           <div className="w-full flex justify-end mb-2">
             <button
-              className="header-button mr-4 grid grid-flow-col gap-3"
-              onClick={onToggleModal}
-            >
-              <ImportIcon /> Import
-            </button>
-            <button
-              className="header-button mr-4 grid grid-flow-col gap-3"
+              className="header-button grid grid-flow-col gap-3"
               onClick={onToggleModal}
             >
               <ExportIcon /> Export
-            </button>
-            <button className="header-button" onClick={onToggleModal}>
-              Buat Akun
             </button>
           </div>
         </div>

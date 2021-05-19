@@ -13,11 +13,13 @@ import { ReactComponent as EyeIcon } from "./eye.svg";
 import { ReactComponent as PhoneIcon } from "./phone.svg";
 import { ReactComponent as MenuIcon } from "./menu.svg";
 import { ReactComponent as ArrowDownIcon } from "./arrowDown.svg";
+import { ReactComponent as SendMessageIcon } from "./sendMessage.svg";
 
 export {
   HomeIcon,
   PhoneIcon,
   MessageIcon,
+  SendMessageIcon,
   ExportIcon,
   ImportIcon,
   ReplyIcon,

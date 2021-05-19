@@ -5,10 +5,10 @@ import Container from "../../components/container/Container";
 import {
   PencilIcon,
   TrashIcon,
-  SettingsIcon,
   ExportIcon,
   ImportIcon,
   ArrowDownIcon,
+  SendMessageIcon,
   PhoneIcon,
 } from "../../assets/svg/icons";
 
@@ -17,6 +17,7 @@ import TextInput from "../../components/form/TextInput";
 import ModalApp from "../../components/modal/ModalApp";
 
 import "./Message.css";
+import SecondaryButton from "../../components/form/SecondaryButton";
 
 const customStyles = {
   rows: {
@@ -90,10 +91,10 @@ const Message = () => {
           return (
             <div className="grid gap-x-2 grid-flow-col">
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-blue-800">
-                <SettingsIcon
+                <SendMessageIcon
                   width={16}
                   height={16}
-                  className="stroke-current stroke-2 text-blue-900"
+                  className="stroke-current stroke-1 text-blue-900"
                 />
               </button>
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-green-600">
@@ -182,28 +183,30 @@ const Message = () => {
               className="border border-l-0 border-gray-300 px-2 flex items-center rounded-r cursor-pointer"
               onClick={onToggleModal}
             >
-              <ArrowDownIcon width={16} height={16} className="stroke-current stroke-2 text-gray-500"/>
+              <ArrowDownIcon
+                width={16}
+                height={16}
+                className="stroke-current stroke-2 text-gray-500"
+              />
             </div>
           </div>
           {/* end of left header */}
 
           {/* right header */}
-          <div className="w-full flex justify-end mb-2">
-            <button
-              className="header-button mr-4 grid grid-flow-col gap-3"
+          <div className="right-header-container">
+            <SecondaryButton
+              className="mr-4 grid grid-flow-col gap-3"
               onClick={onToggleModal}
             >
               <ImportIcon /> Import
-            </button>
-            <button
-              className="header-button mr-4 grid grid-flow-col gap-3"
+            </SecondaryButton>
+            <SecondaryButton
+              className="mr-4 grid grid-flow-col gap-3"
               onClick={onToggleModal}
             >
               <ExportIcon /> Export
-            </button>
-            <button className="header-button" onClick={onToggleModal}>
-              Buat Akun
-            </button>
+            </SecondaryButton>
+            <SecondaryButton onClick={onToggleModal}>Buat Akun</SecondaryButton>
           </div>
         </div>
         <div className="py-6">
