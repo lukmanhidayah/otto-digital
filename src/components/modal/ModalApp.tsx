@@ -7,17 +7,20 @@ type ModalAppType = {
   onToggleModal: React.MouseEventHandler<any>;
   title: string;
   textSubmit?: string;
+  onScroll?: React.UIEventHandler<HTMLDivElement>;
   textCancel?: string;
 };
 const ModalApp = ({
   children,
   onToggleModal,
   title,
+  onScroll,
   textSubmit = "Simpan",
   textCancel = "Batal",
 }: ModalAppType) => {
   return (
     <Modal
+      onScroll={onScroll}
       type="full-width"
       className="w-full md:w-2/3 lg:w-1/2"
       onBackgroundClick={onToggleModal}

@@ -7,6 +7,7 @@ interface ModalInterface {
   animation?: "fadeIn" | "bounceIn";
   type?: "full-width" | "relative-width";
   className?: string;
+  onScroll?: React.UIEventHandler<HTMLDivElement>;
 }
 
 const Modal: React.FC<ModalInterface> = ({
@@ -15,6 +16,7 @@ const Modal: React.FC<ModalInterface> = ({
   animation = "fadeIn",
   type = "relative-width",
   className,
+  onScroll,
 }) => {
   const stopPropagation = (e: any) => {
     e.stopPropagation();
@@ -24,6 +26,7 @@ const Modal: React.FC<ModalInterface> = ({
     <RootModal>
       <div onClick={onBackgroundClick} className="modal-background">
         <div
+          onScroll={onScroll}
           className={`modal-container ${type} ${animation} ${className}`}
           onClick={stopPropagation}
         >

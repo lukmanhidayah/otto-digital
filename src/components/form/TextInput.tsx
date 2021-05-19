@@ -45,7 +45,7 @@ const TextInput = ({
           onChange={onChange}
           className={`border px-3 py-3 ${
             currency && "pl-12"
-          } placeholder-gray-300 text-black bg-white rounded text-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 w-full`}
+          } placeholder-gray-400 text-black bg-white rounded text-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 w-full`}
           placeholder={placeholder}
           min={min}
         />

@@ -19,6 +19,8 @@ import ModalApp from "../../components/modal/ModalApp";
 
 import "./Message.css";
 import SecondaryButton from "../../components/form/SecondaryButton";
+import TextArea from "../../components/form/TextArea";
+import SelectOption from "../../components/form/SelectOption";
 
 const customStyles = {
   rows: {
@@ -47,14 +49,15 @@ const customStyles = {
 const Message = () => {
   const [isModalShow, setIsModalShow] = useState(false);
   const [isModalImportShow, setIsModalImportShow] = useState(false);
+  const [isScroll, setIsScroll] = useState(false);
 
   const uploadFileRef = useRef<HTMLInputElement>(null);
 
   const [dataModal, setDataModal] = useState({
-    productName: "",
-    productStock: "",
-    productPrice: "",
+    phoneNumber: "",
+    functionalText: "",
     productImage: "",
+    contentMessage: "",
   });
 
   const columns = useMemo(
@@ -131,39 +134,64 @@ const Message = () => {
   return (
     <Container menuType="message">
       {isModalShow && (
-        <ModalApp onToggleModal={onToggleModal} title="Tambah Produk">
+        <ModalApp
+          onScroll={() => {
+            setIsScroll(false);
+          }}
+          onToggleModal={onToggleModal}
+          title="Kirim Pesan"
+          textSubmit="Kirim"
+        >
           <>
             <TextInput
-              name="productName"
+              name="phoneNumber"
               type="text"
               onChange={onChange}
-              placeholder="Nama Produk"
-              value={dataModal.productName}
+              placeholder="Nomor Telepon"
+              value={dataModal.phoneNumber}
             />
+            <div className="mb-3">
+              <h4 className="block text-gray-900 text-sm font-normal mb-2">
+                Pesan Masuk
+              </h4>
+              <div className="flex justify-between">
+                <button className="type-message-reply active rounded-l">
+                  Perorangan
+                </button>
+                <button className="type-message-reply border-l-0 border-r-0">
+                  Grup
+                </button>
+                <button className="type-message-reply rounded-r">Random</button>
+              </div>
+            </div>
+
             <TextInput
-              name="productStock"
-              type="number"
+              name="functionalMessage"
+              type="text"
+              placeholder="Tujuan"
               onChange={onChange}
-              placeholder="Stok"
-              min={1}
-              value={dataModal.productStock}
+              value={dataModal.functionalText}
             />
-            <TextInput
-              currency
-              name="productPrice"
-              type="number"
-              placeholder="Harga"
+            <TextArea
+              name="contentMessage"
+              placeholder="Isi Pesan"
               onChange={onChange}
-              min={1}
-              value={dataModal.productPrice}
+              value={dataModal.contentMessage}
             />
             <TextInput
-              name="productImage"
+              name="attachmentMessage"
               accept="image/*"
               type="file"
               onChange={onChange}
-              placeholder="Gambar Produk"
+              placeholder="Lampiran (Opsional)"
               value={dataModal.productImage}
+            />
+            <SelectOption
+              onClick={() => {
+                setIsScroll(true);
+              }}
+              isShow={isScroll}
+              placeholder="Pilih Grup"
             />
           </>
         </ModalApp>
