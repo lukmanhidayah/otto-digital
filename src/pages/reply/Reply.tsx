@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
@@ -9,6 +9,7 @@ import {
   ImportIcon,
   ArrowDownIcon,
   PhoneIcon,
+  FileIcon,
 } from "../../assets/svg/icons";
 
 import data from "../../constants/SampelMovieData";
@@ -44,6 +45,9 @@ const customStyles = {
 
 const Reply = () => {
   const [isModalShow, setIsModalShow] = useState(false);
+  const [isModalImportShow, setIsModalImportShow] = useState(false);
+
+  const uploadFileRef = useRef<HTMLInputElement>(null);
 
   const [dataModal, setDataModal] = useState({
     productName: "",
@@ -104,6 +108,8 @@ const Reply = () => {
   );
 
   const onToggleModal = () => setIsModalShow((prevState) => !prevState);
+  const onToggleModalImport = () =>
+    setIsModalImportShow((prevState) => !prevState);
 
   const onChange = (e: { target: { name: string; value: any } }) => {
     const { name, value } = e.target;
@@ -155,6 +161,40 @@ const Reply = () => {
         </ModalApp>
       )}
 
+      {isModalImportShow && (
+        <ModalApp
+          onToggleModal={onToggleModalImport}
+          title="Import Pesan"
+          textSubmit="Import"
+        >
+          <div className="py-4">
+            <label htmlFor="" className="text-base mb-2">
+              Pilih File
+            </label>
+            <div className="flex justify-center flex-col items-center">
+              <button
+                onClick={() => {
+                  if (uploadFileRef) {
+                    uploadFileRef?.current?.click();
+                  }
+                }}
+                className="rounded border border-gray-400 py-3 px-8 flex flex-col items-center justify-center focus:outline-none"
+              >
+                <FileIcon />
+                <span className="text-sm text-gray-600 mt-3">Berkas</span>
+              </button>
+              <p className="text-gray-600 mt-5">Belum ada file yang dipilih</p>
+            </div>
+            <input
+              ref={uploadFileRef}
+              type="file"
+              accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+              className="hidden"
+            />
+          </div>
+        </ModalApp>
+      )}
+
       <div className="content-container px-10">
         <div className="flex">
           {/* left header */}
@@ -188,7 +228,7 @@ const Reply = () => {
           <div className="right-header-container">
             <SecondaryButton
               className="mr-4 grid grid-flow-col gap-3"
-              onClick={onToggleModal}
+              onClick={onToggleModalImport}
             >
               <ImportIcon /> Import
             </SecondaryButton>

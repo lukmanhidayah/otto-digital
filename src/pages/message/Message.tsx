@@ -175,7 +175,7 @@ const Message = () => {
           title="Import Pesan"
           textSubmit="Import"
         >
-          <div>
+          <div className="py-4">
             <label htmlFor="" className="text-base mb-2">
               Pilih File
             </label>
