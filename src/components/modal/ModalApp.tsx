@@ -6,8 +6,16 @@ type ModalAppType = {
   children?: React.ReactNode;
   onToggleModal: React.MouseEventHandler<any>;
   title: string;
+  textSubmit?: string;
+  textCancel?: string;
 };
-const ModalApp = ({ children, onToggleModal, title }: ModalAppType) => {
+const ModalApp = ({
+  children,
+  onToggleModal,
+  title,
+  textSubmit = "Simpan",
+  textCancel = "Batal",
+}: ModalAppType) => {
   return (
     <Modal
       type="full-width"
@@ -26,10 +34,10 @@ const ModalApp = ({ children, onToggleModal, title }: ModalAppType) => {
           onClick={onToggleModal}
           className="button-secondary bg-white text-blue-800 border border-blue-800 active:bg-blue-50 "
         >
-          Batal
+          {textCancel}
         </button>
         <button className="button-secondary bg-blue-900 text-white ml-5 active:bg-blue-850 shadow">
-          Simpan
+          {textSubmit}
         </button>
       </div>
     </Modal>

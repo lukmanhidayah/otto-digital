@@ -14,6 +14,7 @@ import { ReactComponent as PhoneIcon } from "./phone.svg";
 import { ReactComponent as MenuIcon } from "./menu.svg";
 import { ReactComponent as ArrowDownIcon } from "./arrowDown.svg";
 import { ReactComponent as SendMessageIcon } from "./sendMessage.svg";
+import { ReactComponent as FileIcon } from "./file.svg";
 
 export {
   HomeIcon,
@@ -32,4 +33,5 @@ export {
   TrashIcon,
   MenuIcon,
   ArrowDownIcon,
+  FileIcon,
 };

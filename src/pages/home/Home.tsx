@@ -59,7 +59,7 @@ const Home = () => {
                 <SettingsIcon
                   width={16}
                   height={16}
-                  className="stroke-current stroke-1 text-blue-900"
+                  className="stroke-current stroke-2 text-blue-900"
                 />
               </button>
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-green-600">
