@@ -247,6 +247,7 @@ const Reply = () => {
           <DataTable
             noHeader
             striped
+            pagination
             columns={columns}
             data={data}
             customStyles={customStyles}

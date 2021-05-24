@@ -283,6 +283,7 @@ const Message = () => {
           <DataTable
             noHeader
             striped
+            pagination
             columns={columns}
             data={data}
             customStyles={customStyles}

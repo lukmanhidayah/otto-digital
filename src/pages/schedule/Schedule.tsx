@@ -222,6 +222,7 @@ const Schedule = () => {
         <div className="py-6">
           <DataTable
             noHeader
+            pagination
             striped
             columns={columns}
             data={data}
