@@ -9,7 +9,6 @@ import "./Home.css";
 import URL from "../../constants/URL";
 import { useLocation } from "react-router";
 import SettingColumns from "../../dataTable/SettingColumns";
-import FirstLetterUpper from "../../utils/AllFirstLetterUp";
 import FirstLetterUp from "../../utils/FirstLetterUp";
 
 const Home = () => {
@@ -42,7 +41,7 @@ const Home = () => {
 
   useEffect(() => {
     getDate(page);
-  }, [page]);
+  }, [page, location.pathname]);
 
   const getDate = (page: number) => {
     fetch(

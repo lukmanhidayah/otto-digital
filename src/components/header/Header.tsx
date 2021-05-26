@@ -49,6 +49,11 @@ const Header = ({ menuType }: HeaderType) => {
     }));
   };
 
+  const getDayName = () => {
+    var d = new Date();
+    return d.toString().split(" ")[0];
+  };
+
   return (
     <header>
       {/* modal change profile*/}
@@ -153,7 +158,9 @@ const Header = ({ menuType }: HeaderType) => {
           </button>
           <div className="title-container">
             <h1>{FirstLetterUpper(menuType)}</h1>
-            <h3 className="text-xs font-light">Senin, {FormatDate(new Date())}</h3>
+            <h3 className="text-xs font-light">
+              {getDayName()}, {FormatDate(new Date())}
+            </h3>
           </div>
         </div>
         <button onClick={showUserMenu} className="user-container">
@@ -167,7 +174,9 @@ const Header = ({ menuType }: HeaderType) => {
             </div>
 
             <div className="user-name-container">
-              <h4 className="leading-tight text-md font-bold">Lukman Hidayah</h4>
+              <h4 className="leading-tight text-md font-bold">
+                Lukman Hidayah
+              </h4>
               <p className="text-xs">Admin</p>
             </div>
           </div>
