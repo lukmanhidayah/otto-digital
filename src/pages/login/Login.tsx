@@ -11,12 +11,12 @@ const Login = () => {
       <div className="login-container">
         <div className="login-content">
           <div className="logo-container">
-            <div className="flex items-center justify-center w-full mb-3">
+            <div className="flex flex-col items-center justify-center w-full mb-3">
               <span className="p-4 border rounded-full">
                 <LogoIcon width={48} height={48} className="stroke-current" />
               </span>
-              <h1 className="text-blueGray-500 text-5xl font-normal uppercase ml-4">
-                Logo
+              <h1 className="text-blueGray-500 text-3xl font-bold ml-4 text-blue-850">
+                Otto Digital
               </h1>
             </div>
             <hr className="underline" />
