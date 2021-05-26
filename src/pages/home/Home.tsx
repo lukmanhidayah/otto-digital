@@ -2,12 +2,7 @@ import { useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
-import {
-  PencilIcon,
-  TrashIcon,
-  SettingsIcon,
-  ExportIcon,
-} from "../../assets/svg/icons";
+import {} from "../../assets/svg/icons";
 
 import data from "../../constants/SampelMovieData";
 import TextInput from "../../components/form/TextInput";
@@ -56,17 +51,17 @@ const Home = () => {
           return (
             <div className="grid gap-x-2 grid-flow-col">
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-blue-800">
-                <SettingsIcon
+                {/* <SettingsIcon
                   width={16}
                   height={16}
                   className="stroke-current stroke-2 text-blue-900"
-                />
+                /> */}
               </button>
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-green-600">
-                <PencilIcon className="stroke-current stroke-2" />
+                {/* <PencilIcon className="stroke-current stroke-2" /> */}
               </button>
               <button className="p-1 px-2 border rounded focus:outline-none hover:bg-red-100 border-red-700">
-                <TrashIcon className="stroke-current stroke-1" />
+                {/* <TrashIcon className="stroke-current stroke-1" /> */}
               </button>
             </div>
           );

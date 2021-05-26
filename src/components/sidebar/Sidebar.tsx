@@ -6,12 +6,7 @@ import { toggleNavBar } from "../../redux/utils/utilsAction";
 import { useCallback } from "react";
 import {
   HomeIcon,
-  MessageIcon,
-  ReplyIcon,
-  HistoryIcon,
-  ScheduleIcon,
   CloseIcon,
-  CategoryIcon,
 } from "../../assets/svg/icons";
 
 import { ReactComponent as LogoIcon } from "../../assets/svg/logo.svg";
@@ -48,7 +43,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
           <LogoIcon width={42} height={42} />
           <h1 className="logo ml-1">Otto Digital</h1>
           <button className="close-container" onClick={actionToggleNavBar}>
-            <CloseIcon />
+            <CloseIcon stroke="white" />
           </button>
         </div>
         <ul>
@@ -60,7 +55,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
               onClick={actionToggleNavBar}
             >
               <HomeIcon width={20} height={20} className="icon" />
-              <span className="sidebar-text">Beranda</span>
+              <span className="sidebar-text">Operator</span>
             </Link>
           </li>
           <li>
@@ -70,52 +65,8 @@ const Sidebar = ({ menuType }: SideBarType) => {
               to="/category"
               onClick={actionToggleNavBar}
             >
-              <CategoryIcon fill="white" width={20} height={20} className="icon" />
-              <span className="sidebar-text">Kategori</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              title="Kirim Pesan"
-              className={`sidebar-link ${menuType === "message" && "active"}`}
-              to="/message"
-              onClick={actionToggleNavBar}
-            >
-              <MessageIcon width={20} height={20} className="icon" />
-              <span className="sidebar-text">Message</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              title="Balas Otomatis"
-              className={`sidebar-link ${menuType === "reply" && "active"}`}
-              to="/reply"
-              onClick={actionToggleNavBar}
-            >
-              <ReplyIcon width={20} height={20} className="icon" />
-              <span className="sidebar-text">Balas Otomatis</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              title="Pesan Terjadwal"
-              className={`sidebar-link ${menuType === "schedule" && "active"}`}
-              to="/schedule"
-              onClick={actionToggleNavBar}
-            >
-              <ScheduleIcon width={20} height={20} className="icon" />
-              <span className="sidebar-text">Pesan Terjadwal</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              title="Riwayat Pesan"
-              className={`sidebar-link ${menuType === "history" && "active"}`}
-              to="/history"
-              onClick={actionToggleNavBar}
-            >
-              <HistoryIcon width={20} height={20} className="icon" />
-              <span className="sidebar-text">Riwayat Pesan</span>
+              <HomeIcon fill="white" width={20} height={20} className="icon" />
+              <span className="sidebar-text">Sales</span>
             </Link>
           </li>
         </ul>

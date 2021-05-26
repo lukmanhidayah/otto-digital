@@ -15,7 +15,6 @@ type HeaderType = {
 const Header = ({ menuType }: HeaderType) => {
   const [isHideUserMenu, setIsHideUserMenu] = useState(true);
   const [isModalShow, setIsModalShow] = useState(false);
-  const [isModalCompany, setIsModalCompany] = useState(false);
 
   // data modal user
   const [dataModal, setDataModal] = useState({
@@ -40,21 +39,10 @@ const Header = ({ menuType }: HeaderType) => {
 
   const onToggleModal = () => setIsModalShow((prevState) => !prevState);
 
-  const onToggleModalCompany = () =>
-    setIsModalCompany((prevState) => !prevState);
   const onChange = (e: { target: { name: string; value: any } }) => {
     const { name, value } = e.target;
     console.log(value);
     setDataModal((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const onChangeCompany = (e: { target: { name: string; value: any } }) => {
-    const { name, value } = e.target;
-    console.log(value);
-    setDataModalCompany((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -128,21 +116,21 @@ const Header = ({ menuType }: HeaderType) => {
                 name="oldPassword"
                 type="password"
                 placeholder="Kata Sandi Lama"
-                onChange={onChangeCompany}
+                onChange={onChange}
                 value={dataModal.oldPassword}
               />
               <TextInput
                 name="newPassword"
                 type="password"
                 placeholder="Kata Sandi Baru"
-                onChange={onChangeCompany}
+                onChange={onChange}
                 value={dataModal.newPassword}
               />
               <TextInput
                 name="confirmPassword"
                 type="password"
                 placeholder="Ulangi Kata Sandi"
-                onChange={onChangeCompany}
+                onChange={onChange}
                 value={dataModal.confirmPassword}
               />
             </div>
@@ -150,41 +138,6 @@ const Header = ({ menuType }: HeaderType) => {
         </ModalApp>
       )}
       {/* end of modal change profile */}
-
-      {/* modal change company */}
-      {isModalCompany && (
-        <ModalApp
-          onToggleModal={onToggleModalCompany}
-          title="Ubah data perusahaan"
-        >
-          <>
-            <TextInput
-              name="name"
-              type="text"
-              onChange={onChange}
-              placeholder="Nama Pengguna"
-              value={dataModalCompany.name}
-            />
-            <TextInput
-              name="phoneNumber"
-              type="text"
-              placeholder="Nomor Telepon"
-              onChange={onChange}
-              min={1}
-              value={dataModalCompany.phoneNumber}
-            />
-            <TextInput
-              name="photo"
-              accept="image/*"
-              type="file"
-              onChange={onChange}
-              placeholder="Foto Pengguna"
-              value={dataModalCompany.photo}
-            />
-          </>
-        </ModalApp>
-      )}
-      {/* end of change modal company */}
 
       <nav className="header">
         {/* logo container */}
@@ -228,16 +181,11 @@ const Header = ({ menuType }: HeaderType) => {
             <ul>
               <li>
                 <div onClick={onToggleModal} className="user-menu">
-                  Ubah profile
+                  Profile
                 </div>
               </li>
               <li>
-                <div onClick={onToggleModalCompany} className="user-menu">
-                  Ubah data perusahaan
-                </div>
-              </li>
-              <li>
-                <div className="user-menu">keluar</div>
+                <div className="user-menu">Keluar</div>
               </li>
             </ul>
           </div>
