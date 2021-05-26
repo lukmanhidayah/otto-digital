@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ArrowDownIcon, MenuIcon } from "../../assets/svg/icons";
 import { toggleNavBar } from "../../redux/utils/utilsAction";
-import FirstLetterUpper from "../../utils/FirstLetterUpper";
+import FirstLetterUpper from "../../utils/AllFirstLetterUp";
+import FormatDate from "../../utils/FormatDate";
 import TextInput from "../form/TextInput";
 import ModalApp from "../modal/ModalApp";
 
@@ -152,7 +153,7 @@ const Header = ({ menuType }: HeaderType) => {
           </button>
           <div className="title-container">
             <h1>{FirstLetterUpper(menuType)}</h1>
-            <h3 className="text-xs font-light">Senin, 14 Mei 2021</h3>
+            <h3 className="text-xs font-light">Senin, {FormatDate(new Date())}</h3>
           </div>
         </div>
         <button onClick={showUserMenu} className="user-container">

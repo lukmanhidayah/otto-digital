@@ -1,17 +1,18 @@
 import { XCircleIcon, CheckCircleIcon } from "../assets/svg/icons/index";
+import FormatDate from "../utils/FormatDate";
 
 const SettingColumns = [
   {
     name: "Name",
     selector: "name",
-    sortable: true,
+    sortable: false,
     grow: 2,
     cell: (row: any) => <div>{row.name}</div>,
   },
   {
     name: "Address",
     selector: "address",
-    sortable: true,
+    sortable: false,
     grow: 2,
     cell: (row: any) => <div>{row.address}</div>,
   },
@@ -19,13 +20,14 @@ const SettingColumns = [
   {
     name: "Join Date",
     selector: "joinDate",
-    sortable: true,
+    sortable: false,
     grow: 1,
-    cell: (row: any) => <div>{row.joinDate}</div>,
+    cell: (row: any) => <div>{FormatDate(new Date(row.joinDate))}</div>,
   },
   {
     name: "Status",
     center: true,
+    sortable: false,
     grow: 1,
     cell: (row: any) => {
       return (

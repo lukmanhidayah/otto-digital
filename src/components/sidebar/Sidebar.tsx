@@ -52,18 +52,18 @@ const Sidebar = ({ menuType }: SideBarType) => {
             <Link
               title="Beranda"
               className={`sidebar-link ${menuType === "home" && "active"}`}
-              to="/home"
+              to="/operation"
               onClick={actionToggleNavBar}
             >
               <OperatorIcon width={20} height={20} className="icon" />
-              <span className="sidebar-text">Operator</span>
+              <span className="sidebar-text">Operation</span>
             </Link>
           </li>
           <li>
             <Link
               title="Category"
               className={`sidebar-link ${menuType === "category" && "active"}`}
-              to="/category"
+              to="/sales"
               onClick={actionToggleNavBar}
             >
               <SalesIcon width={20} height={20} className="icon" />

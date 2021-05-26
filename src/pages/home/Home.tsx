@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
-import data from "../../constants/SampelMovieData";
 import TextInput from "../../components/form/TextInput";
 import ModalApp from "../../components/modal/ModalApp";
 
@@ -10,20 +9,18 @@ import "./Home.css";
 import URL from "../../constants/URL";
 import { useLocation } from "react-router";
 import SettingColumns from "../../dataTable/SettingColumns";
+import FirstLetterUpper from "../../utils/AllFirstLetterUp";
+import FirstLetterUp from "../../utils/FirstLetterUp";
 
 const Home = () => {
-  type TypeDate = typeof data;
+  const location = useLocation();
   const [isModalShow, setIsModalShow] = useState(false);
-  const [dataDashboard, setDataDashboard] = useState<{
-    total: number;
-    user: TypeDate;
-  }>({
+  const [dataDashboard, setDataDashboard] = useState({
     total: 0,
     user: [],
   });
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const location = useLocation();
 
   const [dataModal, setDataModal] = useState({
     productName: "",
@@ -48,10 +45,15 @@ const Home = () => {
   }, [page]);
 
   const getDate = (page: number) => {
-    fetch(`${URL.BASE_URL}dashboard?page=${page}&type=Sales`, {
-      method: "GET",
-      redirect: "follow",
-    })
+    fetch(
+      `${URL.BASE_URL}dashboard?page=${page}&type=${FirstLetterUp(
+        location.pathname
+      )}`,
+      {
+        method: "GET",
+        redirect: "follow",
+      }
+    )
       .then((response) => response.json())
       .then((result) => {
         console.log(result.data);
