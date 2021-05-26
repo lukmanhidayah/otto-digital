@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ReactComponent as ArrowDownIcon } from "../../assets/svg/icons/arrowDown.svg";
-import { ReactComponent as MenuIcon } from "../../assets/svg/icons/menu.svg";
+import { ArrowDownIcon, MenuIcon } from "../../assets/svg/icons";
 import { toggleNavBar } from "../../redux/utils/utilsAction";
+import FirstLetterUpper from "../../utils/FirstLetterUpper";
 import TextInput from "../form/TextInput";
 import ModalApp from "../modal/ModalApp";
 
 import "./Header.css";
 
-const Header = () => {
+type HeaderType = {
+  menuType: String;
+};
+
+const Header = ({ menuType }: HeaderType) => {
   const [isHideUserMenu, setIsHideUserMenu] = useState(true);
   const [isModalShow, setIsModalShow] = useState(false);
   const [isModalCompany, setIsModalCompany] = useState(false);
@@ -194,7 +198,7 @@ const Header = () => {
             <MenuIcon width={32} height={32} />
           </button>
           <div className="title-container">
-            <h1>Dashboard</h1>
+            <h1>{FirstLetterUpper(menuType)}</h1>
             <h3 className="text-xs font-light">Senin, 14 Mei 2021</h3>
           </div>
         </div>

@@ -15,7 +15,7 @@ const Container = ({ children, menuType, className }: ContainerType) => {
     <div className={`custom-container ${className}`}>
       <Sidebar menuType={menuType} />
       <Content>
-        <Header />
+        <Header menuType={menuType} />
         <div className="px-2 md:px-0">{children}</div>
       </Content>
     </div>

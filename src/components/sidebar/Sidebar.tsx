@@ -11,6 +11,7 @@ import {
   HistoryIcon,
   ScheduleIcon,
   CloseIcon,
+  CategoryIcon,
 } from "../../assets/svg/icons";
 
 import { ReactComponent as LogoIcon } from "../../assets/svg/logo.svg";
@@ -60,6 +61,17 @@ const Sidebar = ({ menuType }: SideBarType) => {
             >
               <HomeIcon width={20} height={20} className="icon" />
               <span className="sidebar-text">Beranda</span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              title="Category"
+              className={`sidebar-link ${menuType === "category" && "active"}`}
+              to="/category"
+              onClick={actionToggleNavBar}
+            >
+              <CategoryIcon fill="white" width={20} height={20} className="icon" />
+              <span className="sidebar-text">Kategori</span>
             </Link>
           </li>
           <li>

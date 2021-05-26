@@ -9,6 +9,7 @@ import { ReactComponent as TrashIcon } from "./trash.svg";
 import { ReactComponent as SettingsIcon } from "./settings.svg";
 import { ReactComponent as ExportIcon } from "./export.svg";
 import { ReactComponent as ImportIcon } from "./import.svg";
+import { ReactComponent as CategoryIcon } from "./category.svg";
 import { ReactComponent as EyeIcon } from "./eye.svg";
 import { ReactComponent as PhoneIcon } from "./phone.svg";
 import { ReactComponent as MenuIcon } from "./menu.svg";
@@ -29,6 +30,7 @@ export {
   PencilIcon,
   SettingsIcon,
   EyeIcon,
+  CategoryIcon,
   CloseIcon,
   TrashIcon,
   MenuIcon,

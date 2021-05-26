@@ -1,4 +1,4 @@
-const FirstLetterUpper = (letter) => {
+const FirstLetterUpper = (letter: String) => {
   try {
     return letter
       .split(" ")

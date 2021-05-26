@@ -14,53 +14,9 @@ import data from "../../constants/SampelMovieData";
 import TextInput from "../../components/form/TextInput";
 import ModalApp from "../../components/modal/ModalApp";
 
-import "./History.css";
+import "./Category.css";
 
-const customStyles = {
-  rows: {
-    style: {
-      border: "1px solid #eee",
-      minHeight: "72px", // override the row height
-    },
-  },
-  headCells: {
-    style: {
-      borderTop: "1px solid #ddd",
-      backgroundColor: "#012965",
-      color: "white",
-      paddingLeft: "8px", // override the cell padding for head cells
-      paddingRight: "8px",
-      // "&:hover": {
-      //   color: "red",
-      // },
-    },
-  },
-  headColumns: {
-    style: {
-      borderTop: "1px solid #ddd",
-      backgroundColor: "#012965",
-      color: "red",
-      paddingLeft: "8px", // override the cell padding for head cells
-      paddingRight: "8px",
-      // "&:hover": {
-      //   color: "red",
-      // },
-    },
-  },
-  cells: {
-    style: {
-      paddingLeft: "8px", // override the cell padding for data cells
-      paddingRight: "8px",
-    },
-  },
-  action: {
-    button: "rgba(0,0,0,.54)",
-    hover: "red",
-    disabled: "rgba(0,0,0,.12)",
-  },
-};
-
-const History = () => {
+const Category = () => {
   const [isModalShow, setIsModalShow] = useState(false);
 
   const [dataModal, setDataModal] = useState({
@@ -149,7 +105,7 @@ const History = () => {
   };
 
   return (
-    <Container menuType="history">
+    <Container menuType="category">
       {isModalShow && (
         <ModalApp onToggleModal={onToggleModal} title="Tambah Produk">
           <>
@@ -243,4 +199,48 @@ const History = () => {
   );
 };
 
-export default History;
+export default Category;
+
+const customStyles = {
+  rows: {
+    style: {
+      border: "1px solid #eee",
+      minHeight: "72px", // override the row height
+    },
+  },
+  headCells: {
+    style: {
+      borderTop: "1px solid #ddd",
+      backgroundColor: "#012965",
+      color: "white",
+      paddingLeft: "8px", // override the cell padding for head cells
+      paddingRight: "8px",
+      // "&:hover": {
+      //   color: "red",
+      // },
+    },
+  },
+  headColumns: {
+    style: {
+      borderTop: "1px solid #ddd",
+      backgroundColor: "#012965",
+      color: "red",
+      paddingLeft: "8px", // override the cell padding for head cells
+      paddingRight: "8px",
+      // "&:hover": {
+      //   color: "red",
+      // },
+    },
+  },
+  cells: {
+    style: {
+      paddingLeft: "8px", // override the cell padding for data cells
+      paddingRight: "8px",
+    },
+  },
+  action: {
+    button: "rgba(0,0,0,.54)",
+    hover: "red",
+    disabled: "rgba(0,0,0,.12)",
+  },
+};
