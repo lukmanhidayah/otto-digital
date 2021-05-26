@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleNavBar } from "../../redux/utils/utilsAction";
 import { useCallback } from "react";
 import {
-  HomeIcon,
+  OperatorIcon,
   CloseIcon,
+  SalesIcon
 } from "../../assets/svg/icons";
 
 import { ReactComponent as LogoIcon } from "../../assets/svg/logo.svg";
@@ -54,7 +55,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
               to="/home"
               onClick={actionToggleNavBar}
             >
-              <HomeIcon width={20} height={20} className="icon" />
+              <OperatorIcon width={20} height={20} className="icon" />
               <span className="sidebar-text">Operator</span>
             </Link>
           </li>
@@ -65,7 +66,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
               to="/category"
               onClick={actionToggleNavBar}
             >
-              <HomeIcon fill="white" width={20} height={20} className="icon" />
+              <SalesIcon width={20} height={20} className="icon" />
               <span className="sidebar-text">Sales</span>
             </Link>
           </li>

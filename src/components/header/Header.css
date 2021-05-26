@@ -30,7 +30,7 @@
 }
 
 .user-content .user-name-container {
-  @apply hidden md:block ml-6 flex-col;
+  @apply hidden md:flex ml-6 flex-col items-start;
 }
 
 .user-profile-container .user-profile {

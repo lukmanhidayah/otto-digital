@@ -166,7 +166,8 @@ const Header = ({ menuType }: HeaderType) => {
             </div>
 
             <div className="user-name-container">
-              <h4 className="leading-tight text-md">Lukman Hidayah</h4>
+              <h4 className="leading-tight text-md font-bold">Lukman Hidayah</h4>
+              <p className="text-xs">Admin</p>
             </div>
           </div>
           <div className="icon-container">
