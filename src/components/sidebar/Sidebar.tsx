@@ -46,7 +46,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
       <div className="sidebar-content">
         <div className="logo-container">
           <LogoIcon width={42} height={42} />
-          <h1 className="logo ml-1">Logo</h1>
+          <h1 className="logo ml-1">Otto Digital</h1>
           <button className="close-container" onClick={actionToggleNavBar}>
             <CloseIcon />
           </button>
