@@ -24,7 +24,9 @@ const App = () => {
       <div id="modal-root" />
       <Switch>
         <Route path={"/login"} exact={true} component={Login} />
-        <Route path={"/home"} component={Home} />
+        <Route path={"/operator"} component={Home} />
+        <Route path={"/sales"} component={Home} />
+        <Route path={"/admin"} component={Home} />
         <Redirect from="/" to="/login" />
       </Switch>
     </div>

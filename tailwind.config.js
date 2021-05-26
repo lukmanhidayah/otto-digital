@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontSize: {
+        xxs: "7pt",
+      },
       colors: {
         blue: {
           900: "#012965",

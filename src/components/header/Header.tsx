@@ -186,7 +186,7 @@ const Header = ({ menuType }: HeaderType) => {
                 </div>
               </li>
               <li>
-                <div className="user-menu">Keluar</div>
+                <div className="user-menu">Logout</div>
               </li>
             </ul>
           </div>

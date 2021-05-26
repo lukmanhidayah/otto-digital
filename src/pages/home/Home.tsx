@@ -1,18 +1,29 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
-
-import {} from "../../assets/svg/icons";
 
 import data from "../../constants/SampelMovieData";
 import TextInput from "../../components/form/TextInput";
 import ModalApp from "../../components/modal/ModalApp";
 
 import "./Home.css";
-import SecondaryButton from "../../components/form/SecondaryButton";
+import URL from "../../constants/URL";
+import { useLocation } from "react-router";
+import SettingColumns from "../../dataTable/SettingColumns";
 
 const Home = () => {
+  type TypeDate = typeof data;
   const [isModalShow, setIsModalShow] = useState(false);
+  const [dataDashboard, setDataDashboard] = useState<{
+    total: number;
+    user: TypeDate;
+  }>({
+    total: 0,
+    user: [],
+  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const location = useLocation();
 
   const [dataModal, setDataModal] = useState({
     productName: "",
@@ -20,56 +31,6 @@ const Home = () => {
     productPrice: "",
     productImage: "",
   });
-
-  const columns = useMemo(
-    () => [
-      {
-        name: "No",
-        selector: "id",
-        grow: 0,
-        sortable: true,
-      },
-      {
-        name: "Nomor Telepon",
-        selector: "actors",
-        sortable: true,
-        grow: 2,
-        cell: (row: any) => <div>{row.actors}</div>,
-      },
-      {
-        name: "Perusahaan",
-        selector: "actors",
-        sortable: true,
-        grow: 2,
-        cell: (row: any) => <div>{row.actors}</div>,
-      },
-      {
-        name: "Aksi",
-        center: true,
-        grow: 2,
-        cell: (row: any) => {
-          return (
-            <div className="grid gap-x-2 grid-flow-col">
-              <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-blue-800">
-                {/* <SettingsIcon
-                  width={16}
-                  height={16}
-                  className="stroke-current stroke-2 text-blue-900"
-                /> */}
-              </button>
-              <button className="p-1 px-2 border rounded focus:outline-none hover:bg-green-100 border-green-600">
-                {/* <PencilIcon className="stroke-current stroke-2" /> */}
-              </button>
-              <button className="p-1 px-2 border rounded focus:outline-none hover:bg-red-100 border-red-700">
-                {/* <TrashIcon className="stroke-current stroke-1" /> */}
-              </button>
-            </div>
-          );
-        },
-      },
-    ],
-    []
-  );
 
   const onToggleModal = () => setIsModalShow((prevState) => !prevState);
 
@@ -80,6 +41,36 @@ const Home = () => {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  useEffect(() => {
+    getDate(page);
+  }, [page]);
+
+  const getDate = (page: number) => {
+    fetch(`${URL.BASE_URL}dashboard?page=${page}&type=Sales`, {
+      method: "GET",
+      redirect: "follow",
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result.data);
+        if (result.code === 200) {
+          setDataDashboard({
+            total: result.data.total,
+            user: result.data.user,
+          });
+        }
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        console.log("error", error);
+      });
+  };
+
+  const handlePageChange = (page: number) => {
+    setPage(page);
   };
 
   return (
@@ -116,11 +107,18 @@ const Home = () => {
         <div className="py-6">
           <DataTable
             noHeader
-            pagination
             striped
-            columns={columns}
-            data={data}
+            pagination
+            paginationServer
+            progressPending={isLoading}
+            columns={SettingColumns}
+            paginationTotalRows={dataDashboard.total}
+            data={dataDashboard.user}
+            paginationRowsPerPageOptions={[5]}
+            paginationPerPage={5}
             customStyles={customStyles}
+            paginationDefaultPage={1}
+            onChangePage={handlePageChange}
           />
         </div>
       </div>
