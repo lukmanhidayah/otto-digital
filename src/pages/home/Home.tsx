@@ -118,15 +118,6 @@ const Home = () => {
       )}
 
       <div className="content-container px-10">
-        <div className="right-header-container">
-          <SecondaryButton
-            className="mr-4 grid grid-flow-col gap-3"
-            onClick={onToggleModal}
-          >
-            <ExportIcon /> Export
-          </SecondaryButton>
-          <SecondaryButton onClick={onToggleModal}>Buat Akun</SecondaryButton>
-        </div>
         <div className="py-6">
           <DataTable
             noHeader
