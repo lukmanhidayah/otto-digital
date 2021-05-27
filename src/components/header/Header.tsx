@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ArrowDownIcon, MenuIcon, LogoutIcon } from "../../assets/svg/icons";
+import { logout } from "../../redux/user/userAction";
 import { toggleNavBar } from "../../redux/utils/utilsAction";
 import FirstLetterUpper from "../../utils/AllFirstLetterUp";
 import FormatDate from "../../utils/FormatDate";
@@ -53,6 +54,10 @@ const Header = ({ menuType }: HeaderType) => {
     var d = new Date();
     return d.toString().split(" ")[0];
   };
+
+  const onLogout = () => {
+    dispatch(logout())
+  }
 
   return (
     <header>
@@ -158,7 +163,7 @@ const Header = ({ menuType }: HeaderType) => {
           </button>
           <div className="title-container">
             <h1 className="text-xl font-bold">{FirstLetterUpper(menuType)}</h1>
-            <h3 className="text-xs leading-none font-light">
+            <h3 className="text-xs leading-1 font-light">
               {getDayName()}, {FormatDate(new Date())}
             </h3>
           </div>
@@ -190,7 +195,7 @@ const Header = ({ menuType }: HeaderType) => {
                 </div>
               </li>
               <li>
-                <div className="user-menu">
+                <div className="user-menu" onClick={onLogout}>
                   <span>Logout</span>
                   <LogoutIcon width={24} height={24} />
                 </div>

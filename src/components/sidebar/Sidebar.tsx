@@ -54,23 +54,13 @@ const Sidebar = ({ menuType }: SideBarType) => {
                   onClick={actionToggleNavBar}
                 >
                   <OperatorIcon width={20} height={20} className="icon" />
-                  <span className="sidebar-text">{res}</span>
+                  <span className="sidebar-text">
+                    {user.menu.length > 1 ? res : "Dashboard"}
+                  </span>
                 </Link>
               </li>
             );
           })}
-
-          {/* <li>
-            <Link
-              title="Category"
-              className={`sidebar-link ${menuType === "category" && "active"}`}
-              to="/sales"
-              onClick={actionToggleNavBar}
-            >
-              <SalesIcon width={20} height={20} className="icon" />
-              <span className="sidebar-text">Sales</span>
-            </Link>
-          </li> */}
         </ul>
       </div>
     </div>

@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Login from "./pages/login/Login";
-import Home from "./pages/dashboard/Home";
+import Home from "./pages/dashboard/Dashboard";
 
 import "./App.css";
+
 import { useSelector } from "react-redux";
 import IsNullOrEmpty from "./utils/IsNullOrEmpty";
 
@@ -34,9 +35,15 @@ const App = () => {
           </>
         ) : (
           <>
-            <Route path={"/operation"} component={Home} />
-            <Route path={"/sales"} component={Home} />
-            <Redirect from="/" to="/operation" />
+            {user.menu.map((res: any) => {
+              return (
+                <Route
+                  path={`/${res.split(" ")[1]?.toLowerCase()}`}
+                  component={Home}
+                />
+              );
+            })}
+            <Redirect from="/" to={`/${user.menu[0].split(" ")[1]?.toLowerCase()}`} />
           </>
         )}
       </Switch>

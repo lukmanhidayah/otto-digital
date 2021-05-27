@@ -5,7 +5,7 @@ import Container from "../../components/container/Container";
 import TextInput from "../../components/form/TextInput";
 import ModalApp from "../../components/modal/ModalApp";
 
-import "./Home.css";
+import "./Dashboard.css";
 import URL from "../../constants/URL";
 import { useLocation } from "react-router";
 import SettingColumns from "../../dataTable/SettingColumns";
