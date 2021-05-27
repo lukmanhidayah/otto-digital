@@ -7,6 +7,7 @@ import "./Login.css";
 import { useState } from "react";
 import IsNullOrEmpty from "../../utils/IsNullOrEmpty";
 import URL from "../../constants/URL";
+import Spinner from "../../assets/svg/spinner/Spinner";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +20,7 @@ const Login = () => {
 
   const onSubmit = () => {
     setIsLoading(true);
+    setIsNull(false);
     if (
       !IsNullOrEmpty(dataLogin.username) &&
       !IsNullOrEmpty(dataLogin.password)
@@ -45,6 +47,9 @@ const Login = () => {
           setIsLoading(false);
           console.log("error", error);
         });
+    } else {
+      setIsNull(true);
+      setIsLoading(false);
     }
   };
 
@@ -79,6 +84,9 @@ const Login = () => {
                 value={dataLogin.username}
                 placeholder="Username"
                 onChange={onChange}
+                className={
+                  isNull && dataLogin.username === "" ? "border-red-300" : ""
+                }
               />
               <TextInput
                 onChange={onChange}
@@ -86,9 +94,18 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder="Password"
+                className={
+                  isNull && dataLogin.password === "" ? "border-red-300" : ""
+                }
               />
               <CheckBox />
-              <PrimaryButton onClick={onSubmit} title={"Login"} />
+              <PrimaryButton
+                onClick={() => {
+                  !isLoading && onSubmit();
+                }}
+                title={isLoading ? <Spinner /> : "Login"}
+                disabled={isLoading}
+              />
             </form>
           </div>
         </div>
