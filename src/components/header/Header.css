@@ -34,7 +34,7 @@
 }
 
 .user-profile-container .user-profile {
-  @apply object-cover w-full h-full;
+  @apply bg-blue-100  w-full h-full text-3xl antialiased flex justify-center items-center font-bold;
 }
 
 /* end user content */
@@ -49,7 +49,7 @@
 
 /* user menu */
 .user-container .user-menu-container {
-  @apply absolute top-full -mt-2 w-full bg-white rounded shadow text-left overflow-hidden rounded-t-none border-t border-gray-100 md:border-t-0 opacity-0;
+  @apply absolute left-0 top-full -mt-2 w-full bg-white rounded shadow text-left overflow-hidden rounded-t-none border-t border-gray-100 md:border-t-0 opacity-0;
   animation-name: fadeUpIn;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;

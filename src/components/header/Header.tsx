@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ArrowDownIcon, MenuIcon } from "../../assets/svg/icons";
 import { toggleNavBar } from "../../redux/utils/utilsAction";
 import FirstLetterUpper from "../../utils/AllFirstLetterUp";
@@ -16,6 +16,7 @@ type HeaderType = {
 const Header = ({ menuType }: HeaderType) => {
   const [isHideUserMenu, setIsHideUserMenu] = useState(true);
   const [isModalShow, setIsModalShow] = useState(false);
+  const user = useSelector((state: any) => state.user.user);
 
   // data modal user
   const [dataModal, setDataModal] = useState({
@@ -42,7 +43,6 @@ const Header = ({ menuType }: HeaderType) => {
 
   const onChange = (e: { target: { name: string; value: any } }) => {
     const { name, value } = e.target;
-    console.log(value);
     setDataModal((prevState) => ({
       ...prevState,
       [name]: value,
@@ -157,8 +157,8 @@ const Header = ({ menuType }: HeaderType) => {
             <MenuIcon width={32} height={32} />
           </button>
           <div className="title-container">
-            <h1>{FirstLetterUpper(menuType)}</h1>
-            <h3 className="text-xs font-light">
+            <h1 className="text-xl font-bold">{FirstLetterUpper(menuType)}</h1>
+            <h3 className="text-xs leading-none font-light">
               {getDayName()}, {FormatDate(new Date())}
             </h3>
           </div>
@@ -166,18 +166,12 @@ const Header = ({ menuType }: HeaderType) => {
         <button onClick={showUserMenu} className="user-container">
           <div className="user-content">
             <div className="user-profile-container z-20">
-              <img
-                src="https://media.istockphoto.com/photos/young-woman-portrait-in-the-city-picture-id1009749608?k=6&m=1009749608&s=612x612&w=0&h=ckLkBgedCLmhG-TBvm48s6pc8kBfHt7Ppec13IgA6bo="
-                alt="profile"
-                className="user-profile"
-              />
+              <span className="user-profile">{user.name.split('')[0]}</span>
             </div>
 
             <div className="user-name-container">
-              <h4 className="leading-tight text-md font-bold">
-                Lukman Hidayah
-              </h4>
-              <p className="text-xs">Admin</p>
+              <h4 className="leading-tight text-md font-bold">{user.name}</h4>
+              <p className="text-xs">{user.role}</p>
             </div>
           </div>
           <div className="icon-container">

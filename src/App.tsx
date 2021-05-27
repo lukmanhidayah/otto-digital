@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Login from "./pages/login/Login";
-import Home from "./pages/home/Home";
+import Home from "./pages/dashboard/Home";
 
 import "./App.css";
 import { useSelector } from "react-redux";

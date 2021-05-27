@@ -35,7 +35,7 @@
   @apply mr-5 md:mr-0 lg:mr-4 stroke-current stroke-2 text-gray-300;
 }
 .sidebar .sidebar-text {
-  @apply block md:hidden lg:block text-sm;
+  @apply block md:hidden lg:block text-base font-bold;
 }
 
 /* sidebar when active */

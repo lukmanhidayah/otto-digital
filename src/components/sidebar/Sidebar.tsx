@@ -4,11 +4,7 @@ import "./Sidebar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleNavBar } from "../../redux/utils/utilsAction";
 import { useCallback } from "react";
-import {
-  OperatorIcon,
-  CloseIcon,
-  SalesIcon
-} from "../../assets/svg/icons";
+import { OperatorIcon, CloseIcon, SalesIcon } from "../../assets/svg/icons";
 
 import { ReactComponent as LogoIcon } from "../../assets/svg/logo.svg";
 
@@ -26,7 +22,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
   const isShowNavBar = useSelector(
     (state: StateSelectorType) => state.utils.isShowNavBar
   );
-
+  const user = useSelector((state: any) => state.user.user);
   const dispatch = useDispatch();
 
   const actionToggleNavBar = useCallback(() => {
@@ -48,18 +44,23 @@ const Sidebar = ({ menuType }: SideBarType) => {
           </button>
         </div>
         <ul>
-          <li>
-            <Link
-              title="Beranda"
-              className={`sidebar-link ${menuType === "home" && "active"}`}
-              to="/operation"
-              onClick={actionToggleNavBar}
-            >
-              <OperatorIcon width={20} height={20} className="icon" />
-              <span className="sidebar-text">Operation</span>
-            </Link>
-          </li>
-          <li>
+          {user.menu.map((res: any) => {
+            return (
+              <li>
+                <Link
+                  title="Operator"
+                  className={`sidebar-link ${menuType === "home" && "active"}`}
+                  to="/operation"
+                  onClick={actionToggleNavBar}
+                >
+                  <OperatorIcon width={20} height={20} className="icon" />
+                  <span className="sidebar-text">{res}</span>
+                </Link>
+              </li>
+            );
+          })}
+
+          {/* <li>
             <Link
               title="Category"
               className={`sidebar-link ${menuType === "category" && "active"}`}
@@ -69,7 +70,7 @@ const Sidebar = ({ menuType }: SideBarType) => {
               <SalesIcon width={20} height={20} className="icon" />
               <span className="sidebar-text">Sales</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
