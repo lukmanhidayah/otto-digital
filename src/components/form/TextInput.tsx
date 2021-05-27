@@ -6,6 +6,7 @@ type TextInputType = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   accept?: string;
   value?: any;
+  disabled?: boolean;
   currency?: Boolean;
   isNull?: Boolean;
 };
@@ -16,6 +17,7 @@ const TextInput = ({
   type,
   onChange,
   min,
+  disabled = false,
   accept,
   value,
   isNull,
@@ -43,13 +45,14 @@ const TextInput = ({
           name={name}
           value={value}
           id={name}
+          disabled={disabled}
           accept={accept}
           onChange={onChange}
           className={`border px-3 py-3 ${
             currency && "pl-12"
           } placeholder-gray-400 text-black bg-white rounded text-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 w-full ${
             isNull && "border-red-300"
-          }`}
+          } ${disabled && "bg-gray-100"}`}
           placeholder={placeholder}
           min={min}
         />

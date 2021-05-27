@@ -2,6 +2,8 @@ import Modal from "./Modal";
 
 import "./ModalApp.css";
 
+import { XCircleIcon } from "../../assets/svg/icons";
+
 type ModalAppType = {
   children?: React.ReactNode;
   onToggleModal: React.MouseEventHandler<any>;
@@ -27,21 +29,17 @@ const ModalApp = ({
       animation="fadeIn"
     >
       <div className="relative w-full p-5 py-4">
-        <h3 className="modal-title">{title}</h3>
+        <h3 className="modal-title flex items-center">
+          {title}
+          <button
+            className="absolute right-5 focus:outline-none"
+            onClick={onToggleModal}
+          >
+            <XCircleIcon width={20} height={20} />
+          </button>
+        </h3>
 
         <div className="py-2">{children}</div>
-      </div>
-      <div className="button-container-sticky">
-        <div />
-        <button
-          onClick={onToggleModal}
-          className="button-secondary bg-white text-blue-800 border border-blue-800 active:bg-blue-50 "
-        >
-          {textCancel}
-        </button>
-        <button className="button-secondary bg-blue-900 text-white ml-5 active:bg-blue-850 shadow">
-          {textSubmit}
-        </button>
       </div>
     </Modal>
   );

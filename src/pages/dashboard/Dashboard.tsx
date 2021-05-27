@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Container from "../../components/container/Container";
 
-import TextInput from "../../components/form/TextInput";
-import ModalApp from "../../components/modal/ModalApp";
-
 import "./Dashboard.css";
 import URL from "../../constants/URL";
 import { useLocation } from "react-router";
@@ -13,7 +10,6 @@ import FirstLetterUp from "../../utils/FirstLetterUp";
 
 const Home = () => {
   const location = useLocation();
-  const [isModalShow, setIsModalShow] = useState(false);
   const [dataDashboard, setDataDashboard] = useState({
     total: 0,
     user: [],
@@ -21,26 +17,10 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
 
-  const [dataModal, setDataModal] = useState({
-    productName: "",
-    productStock: "",
-    productPrice: "",
-    productImage: "",
-  });
-
-  const onToggleModal = () => setIsModalShow((prevState) => !prevState);
-
-  const onChange = (e: { target: { name: string; value: any } }) => {
-    const { name, value } = e.target;
-    console.log(value);
-    setDataModal((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
   useEffect(() => {
     getDate(page);
+
+    // eslint-disable-next-line
   }, [page, location.pathname]);
 
   const getDate = (page: number) => {
@@ -76,34 +56,6 @@ const Home = () => {
 
   return (
     <Container menuType={`Dashboard ${FirstLetterUp(location.pathname)}`}>
-      {isModalShow && (
-        <ModalApp onToggleModal={onToggleModal} title="Tambah Akun">
-          <>
-            <TextInput
-              name="phoneNumber"
-              type="text"
-              onChange={onChange}
-              placeholder="Nomor Telepon"
-              value={dataModal.productName}
-            />
-            <TextInput
-              name="productStock"
-              type="text"
-              onChange={onChange}
-              placeholder="Nama Akun"
-              value={dataModal.productStock}
-            />
-            <TextInput
-              name="productStock"
-              type="text"
-              onChange={onChange}
-              placeholder="Pilih Perusahaan"
-              value={dataModal.productStock}
-            />
-          </>
-        </ModalApp>
-      )}
-
       <div className="content-container px-10">
         <div className="py-6">
           <DataTable

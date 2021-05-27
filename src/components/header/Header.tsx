@@ -19,36 +19,10 @@ const Header = ({ menuType }: HeaderType) => {
   const [isModalShow, setIsModalShow] = useState(false);
   const user = useSelector((state: any) => state.user.user);
 
-  // data modal user
-  const [dataModal, setDataModal] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    photo: "",
-    oldPassword: "",
-    newPassword: "",
-    confirmPassword: "",
-  });
-
-  // data modal company
-  const [dataModalCompany, setDataModalCompany] = useState({
-    name: "",
-    phoneNumber: "",
-    photo: "",
-  });
-
   const dispatch = useDispatch();
   const showUserMenu = () => setIsHideUserMenu((prevState) => !prevState);
 
   const onToggleModal = () => setIsModalShow((prevState) => !prevState);
-
-  const onChange = (e: { target: { name: string; value: any } }) => {
-    const { name, value } = e.target;
-    setDataModal((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
 
   const getDayName = () => {
     var d = new Date();
@@ -56,94 +30,43 @@ const Header = ({ menuType }: HeaderType) => {
   };
 
   const onLogout = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
 
   return (
     <header>
       {/* modal change profile*/}
       {isModalShow && (
-        <ModalApp onToggleModal={onToggleModal} title="Ubah data pengguna">
+        <ModalApp onToggleModal={onToggleModal} title="Profile user">
           <>
             <TextInput
               name="name"
               type="text"
-              onChange={onChange}
               placeholder="Nama Pengguna"
-              value={dataModal.name}
+              value={user.name}
+              disabled={true}
             />
             <TextInput
-              name="email"
-              type="email"
-              onChange={onChange}
-              placeholder="Email"
-              min={1}
-              value={dataModal.email}
-            />
-            <TextInput
-              name="phoneNumber"
+              name="role"
               type="text"
-              placeholder="Nomor Telepon"
-              onChange={onChange}
+              placeholder="Role"
               min={1}
-              value={dataModal.phoneNumber}
-            />
-            <TextInput
-              name="photo"
-              accept="image/*"
-              type="file"
-              onChange={onChange}
-              placeholder="Foto Pengguna"
-              value={dataModal.photo}
+              disabled={true}
+              value={user.role}
             />
             <div className="relative w-full">
-              <h5 className="block text-gray-900 text-sm font-normal mb-2 border-b pb-1">
-                Ubah Kata Sandi
+              <h5 className="block text-gray-900 text-sm font-normal pb-1">
+                Menus
               </h5>
-              <div className="pl-3">
-                <label className="inline-flex text-sm items-center cursor-pointer">
-                  <input
-                    type="radio"
-                    id="male"
-                    name="gender"
-                    className="form-radio text-blue-800"
-                    checked
-                  />
-                  <span className="ml-2 text-gray-900">Tidak</span>
-                </label>
-                <label className="inline-flex text-sm items-center cursor-pointer ml-5">
-                  <input
-                    type="radio"
-                    id="male"
-                    name="gender"
-                    className="form-radio  text-blue-800 border"
-                  />
-                  <span className="ml-2 text-gray-900">Ubah</span>
-                </label>
-              </div>
-            </div>
-            <div className="hidden py-2">
-              <TextInput
-                name="oldPassword"
-                type="password"
-                placeholder="Kata Sandi Lama"
-                onChange={onChange}
-                value={dataModal.oldPassword}
-              />
-              <TextInput
-                name="newPassword"
-                type="password"
-                placeholder="Kata Sandi Baru"
-                onChange={onChange}
-                value={dataModal.newPassword}
-              />
-              <TextInput
-                name="confirmPassword"
-                type="password"
-                placeholder="Ulangi Kata Sandi"
-                onChange={onChange}
-                value={dataModal.confirmPassword}
-              />
+              {user.menu.map((res: any) => {
+                return (
+                  <div className="py-1">
+                    <span className="text-left text-xs font-normal py-2 px-2 bg-blue-100 rounded">
+                      &#8226; {res}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </>
         </ModalApp>

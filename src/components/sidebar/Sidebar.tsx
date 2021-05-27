@@ -53,9 +53,13 @@ const Sidebar = ({ menuType }: SideBarType) => {
                   to={`/${res.split(" ")[1]?.toLowerCase()}`}
                   onClick={actionToggleNavBar}
                 >
-                  <OperatorIcon width={20} height={20} className="icon" />
+                  {res.split(" ")[1]?.toLowerCase() === "operation" ? (
+                    <OperatorIcon width={20} height={20} className="icon" />
+                  ) : (
+                    <SalesIcon width={20} height={20} className="icon" />
+                  )}
                   <span className="sidebar-text">
-                    {user.menu.length > 1 ? res : "Dashboard"}
+                    {user.menu.length > 1 ? res.split(" ")[1] : "Dashboard"}
                   </span>
                 </Link>
               </li>
