@@ -75,7 +75,7 @@ const Home = () => {
   };
 
   return (
-    <Container menuType="home">
+    <Container menuType={`Dashboard ${FirstLetterUp(location.pathname)}`}>
       {isModalShow && (
         <ModalApp onToggleModal={onToggleModal} title="Tambah Akun">
           <>

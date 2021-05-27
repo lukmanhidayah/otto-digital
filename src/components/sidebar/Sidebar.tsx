@@ -48,9 +48,9 @@ const Sidebar = ({ menuType }: SideBarType) => {
             return (
               <li>
                 <Link
-                  title="Operator"
-                  className={`sidebar-link ${menuType === "home" && "active"}`}
-                  to="/operation"
+                  title={res}
+                  className={`sidebar-link ${menuType === res && "active"}`}
+                  to={`/${res.split(" ")[1]?.toLowerCase()}`}
                   onClick={actionToggleNavBar}
                 >
                   <OperatorIcon width={20} height={20} className="icon" />

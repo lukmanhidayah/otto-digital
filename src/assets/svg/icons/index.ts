@@ -7,12 +7,14 @@ import { ReactComponent as MenuIcon } from "./menu.svg";
 import { ReactComponent as SalesIcon } from "./sales.svg";
 import { ReactComponent as OperatorIcon } from "./operator.svg";
 import { ReactComponent as InfoIcon } from "./info.svg";
+import { ReactComponent as LogoutIcon } from "./logout.svg";
 import { ReactComponent as ArrowDownIcon } from "./arrowDown.svg";
 
 export {
   HomeIcon,
   SalesIcon,
   EyeIcon,
+  LogoutIcon,
   CloseIcon,
   MenuIcon,
   XCircleIcon,

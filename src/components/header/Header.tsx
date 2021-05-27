@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ArrowDownIcon, MenuIcon } from "../../assets/svg/icons";
+import { ArrowDownIcon, MenuIcon, LogoutIcon } from "../../assets/svg/icons";
 import { toggleNavBar } from "../../redux/utils/utilsAction";
 import FirstLetterUpper from "../../utils/AllFirstLetterUp";
 import FormatDate from "../../utils/FormatDate";
@@ -166,7 +166,7 @@ const Header = ({ menuType }: HeaderType) => {
         <button onClick={showUserMenu} className="user-container">
           <div className="user-content">
             <div className="user-profile-container z-20">
-              <span className="user-profile">{user.name.split('')[0]}</span>
+              <span className="user-profile">{user.name.split("")[0]}</span>
             </div>
 
             <div className="user-name-container">
@@ -190,7 +190,10 @@ const Header = ({ menuType }: HeaderType) => {
                 </div>
               </li>
               <li>
-                <div className="user-menu">Logout</div>
+                <div className="user-menu">
+                  <span>Logout</span>
+                  <LogoutIcon width={24} height={24} />
+                </div>
               </li>
             </ul>
           </div>
