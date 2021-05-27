@@ -8,6 +8,9 @@ import { useState } from "react";
 import IsNullOrEmpty from "../../utils/IsNullOrEmpty";
 import URL from "../../constants/URL";
 import Spinner from "../../assets/svg/spinner/Spinner";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/user/userAction";
+import ErrorMessage from "../../components/modal/ErrorMessage";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,10 +20,15 @@ const Login = () => {
   });
 
   const [isNull, setIsNull] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-  const onSubmit = () => {
+  const dispatch = useDispatch();
+
+  const onSubmit = (e: any) => {
+    e.preventDefault();
     setIsLoading(true);
     setIsNull(false);
+    setIsError(false);
     if (
       !IsNullOrEmpty(dataLogin.username) &&
       !IsNullOrEmpty(dataLogin.password)
@@ -35,6 +43,11 @@ const Login = () => {
         .then((response) => response.json())
         .then((result) => {
           console.log(result.data);
+          if (!IsNullOrEmpty(result.data)) {
+            dispatch(login(result.data));
+          } else {
+            setIsError(true);
+          }
           // if (result.code === 200) {
           //   setDataDashboard({
           //     total: result.data.total,
@@ -45,6 +58,7 @@ const Login = () => {
         })
         .catch((error) => {
           setIsLoading(false);
+          setIsError(true);
           console.log("error", error);
         });
     } else {
@@ -61,8 +75,19 @@ const Login = () => {
     }));
   };
 
+  const hideErrorMessage = () => {
+    setIsError(false);
+  };
+
   return (
     <div className="screen-container">
+      {isError && (
+        <ErrorMessage
+          pressClose={hideErrorMessage}
+          title="Login Error"
+          description="Username or password failed, please try again."
+        />
+      )}
       <div className="login-container">
         <div className="login-content">
           <div className="logo-container">
@@ -77,16 +102,14 @@ const Login = () => {
             <hr className="underline" />
           </div>
           <div className="form-container">
-            <form>
+            <form onSubmit={onSubmit}>
               <TextInput
                 name="username"
                 type="username"
                 value={dataLogin.username}
                 placeholder="Username"
                 onChange={onChange}
-                className={
-                  isNull && dataLogin.username === "" ? "border-red-300" : ""
-                }
+                isNull={isNull && dataLogin.username === ""}
               />
               <TextInput
                 onChange={onChange}
@@ -94,15 +117,14 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder="Password"
-                className={
-                  isNull && dataLogin.password === "" ? "border-red-300" : ""
-                }
+                isNull={isNull && dataLogin.password === ""}
               />
               <CheckBox />
               <PrimaryButton
-                onClick={() => {
-                  !isLoading && onSubmit();
-                }}
+                type="submit"
+                // onClick={() => {
+                //   !isLoading && onSubmit();
+                // }}
                 title={isLoading ? <Spinner /> : "Login"}
                 disabled={isLoading}
               />

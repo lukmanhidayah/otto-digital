@@ -7,7 +7,7 @@ type TextInputType = {
   accept?: string;
   value?: any;
   currency?: Boolean;
-  className?: string
+  isNull?: Boolean;
 };
 
 const TextInput = ({
@@ -18,7 +18,7 @@ const TextInput = ({
   min,
   accept,
   value,
-  className,
+  isNull,
   currency = false,
 }: TextInputType) => {
   return (
@@ -47,11 +47,20 @@ const TextInput = ({
           onChange={onChange}
           className={`border px-3 py-3 ${
             currency && "pl-12"
-          } placeholder-gray-400 text-black bg-white rounded text-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 w-full ${className}`}
+          } placeholder-gray-400 text-black bg-white rounded text-sm border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 w-full ${
+            isNull && "border-red-300"
+          }`}
           placeholder={placeholder}
           min={min}
         />
       </div>
+      <span
+        className={`absolute top-0 right-0 text-xxs bg-red-500 text-white rounded py-1 px-3 ${
+          isNull ? "opacity-100" : "opacity-0"
+        } transition-opacity duration-500 ease-in-out`}
+      >
+        cannot be null
+      </span>
     </div>
   );
 };
