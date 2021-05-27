@@ -4,8 +4,58 @@ import TextInput from "../../components/form/TextInput";
 import { ReactComponent as LogoIcon } from "../../assets/svg/logo.svg";
 
 import "./Login.css";
+import { useState } from "react";
+import IsNullOrEmpty from "../../utils/IsNullOrEmpty";
+import URL from "../../constants/URL";
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [dataLogin, setDataLogin] = useState({
+    username: "",
+    password: "",
+  });
+
+  const [isNull, setIsNull] = useState(false);
+
+  const onSubmit = () => {
+    setIsLoading(true);
+    if (
+      !IsNullOrEmpty(dataLogin.username) &&
+      !IsNullOrEmpty(dataLogin.password)
+    ) {
+      fetch(
+        `${URL.BASE_URL}login?username=${dataLogin.username}&password=${dataLogin.password}`,
+        {
+          method: "GET",
+          redirect: "follow",
+        }
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result.data);
+          // if (result.code === 200) {
+          //   setDataDashboard({
+          //     total: result.data.total,
+          //     user: result.data.user,
+          //   });
+          // }
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          console.log("error", error);
+        });
+    }
+  };
+
+  const onChange = (e: { target: { name: string; value: any } }) => {
+    const { name, value } = e.target;
+    setDataLogin((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="screen-container">
       <div className="login-container">
@@ -23,14 +73,22 @@ const Login = () => {
           </div>
           <div className="form-container">
             <form>
-              <TextInput name="email" type="email" placeholder="Email" />
               <TextInput
+                name="username"
+                type="username"
+                value={dataLogin.username}
+                placeholder="Username"
+                onChange={onChange}
+              />
+              <TextInput
+                onChange={onChange}
+                value={dataLogin.password}
                 name="password"
                 type="password"
                 placeholder="Password"
               />
               <CheckBox />
-              <PrimaryButton title={"Masuk"} />
+              <PrimaryButton onClick={onSubmit} title={"Login"} />
             </form>
           </div>
         </div>
