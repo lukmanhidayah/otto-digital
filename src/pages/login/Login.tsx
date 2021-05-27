@@ -46,7 +46,7 @@ const Login = () => {
           if (!IsNullOrEmpty(result.data)) {
             dispatch(login(result.data));
           } else {
-            setIsError(true);
+            error();
           }
           // if (result.code === 200) {
           //   setDataDashboard({
@@ -58,7 +58,7 @@ const Login = () => {
         })
         .catch((error) => {
           setIsLoading(false);
-          setIsError(true);
+          error();
           console.log("error", error);
         });
     } else {
@@ -75,15 +75,20 @@ const Login = () => {
     }));
   };
 
-  const hideErrorMessage = () => {
-    setIsError(false);
+  const error = () => {
+    setIsError(true);
+    setTimeout(() => {
+      setIsError(false);
+    }, 3000);
   };
 
   return (
     <div className="screen-container">
       {isError && (
         <ErrorMessage
-          pressClose={hideErrorMessage}
+          pressClose={() => {
+            setIsError(false);
+          }}
           title="Login Error"
           description="Username or password failed, please try again."
         />

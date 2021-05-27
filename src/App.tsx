@@ -4,8 +4,12 @@ import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
 
 import "./App.css";
+import { useSelector } from "react-redux";
+import IsNullOrEmpty from "./utils/IsNullOrEmpty";
 
 const App = () => {
+  const user = useSelector((state: any) => state.user.user);
+
   useEffect(() => {
     const rootSpinner = document.getElementById("spinner");
     const body = document.getElementById("body");
@@ -23,10 +27,18 @@ const App = () => {
     <div className="app">
       <div id="modal-root" />
       <Switch>
-        <Route path={"/login"} exact={true} component={Login} />
-        <Route path={"/operation"} component={Home} />
-        <Route path={"/sales"} component={Home} />
-        <Redirect from="/" to="/login" />
+        {IsNullOrEmpty(user.role) ? (
+          <>
+            <Route path={"/login"} exact={true} component={Login} />
+            <Redirect from="/" to="/login" />
+          </>
+        ) : (
+          <>
+            <Route path={"/operation"} component={Home} />
+            <Route path={"/sales"} component={Home} />
+            <Redirect from="/" to="/operation" />
+          </>
+        )}
       </Switch>
     </div>
   );
